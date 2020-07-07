@@ -86,8 +86,25 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  // Solution code here...
+  let vernFonky = [];
+  arr.forEach((item, index, array) => {
+    if(item % 3 === 0 && item % 5 === 0){
+      vernFonky.push('Fizz Buzz');
+    }
+    else if(item % 3 === 0){
+      vernFonky.push('Fizz');
+    }
+    else if(item % 5 === 0){
+      vernFonky.push('Buzz');
+    }
+    else {
+      vernFonky.push(item);
+    }
+  })
+  return vernFonky;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
