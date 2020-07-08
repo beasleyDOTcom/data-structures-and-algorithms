@@ -25,7 +25,8 @@ appendFirstToLast(a);
 console.log(a) prints [1, 2, 3, 1]
 ------------------------------------------------------------------------------------------------ */
 const appendFirstToLast = (arr) => {
-  // Solution code here...
+  let firstNumber = arr[0];
+  arr.push(firstNumber);
 };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -85,14 +86,14 @@ describe('Testing challenge 2', () => {
     expect(b).toStrictEqual('This is my story. The end.');
   });
 });
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should append by modifying the oiginal', () => {
     const a = ['Yes', 'it', 'is'];
     appendFirstToLast(a);
     expect(a).toStrictEqual(['Yes', 'it', 'is', 'Yes']);
   });
 });
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should add a property to an object', () => {
     const a = { fullName: 'Octavia Butler' };
     addBirthYearProperty(a, 1947);
