@@ -52,14 +52,14 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-    let funArray = [];
-    let regects = /[A-Z][a-z]+/;
-    str.forEach((city) => {
-        funArray.push(city.match(regects)) 
-    });
-
-    return funArray; 
-  };
+  let regects = /[A-Z]\w+/g;
+  if (regects.test(str)){
+    return str.match(regects);
+  }
+   else {
+     return [];
+   }
+};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -67,8 +67,23 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  let regects = /[A-J]\w*/g; 
-  return arr.toString().match(regects);
+  let lemons = [];
+  let crappy = [];
+  let spaceBack = /[A-J]\w+\s/;
+  let spaceFront = /\s\w+/;
+  let noSpace = /[A-J]\w+/;
+  arr.forEach((city) => {
+    if (spaceBack.test(city)){
+      return lemons.push(city);
+    }
+    else if (spaceFront.test(city)){
+        return crappy.push(city);
+    }
+    else if (noSpace.test(city)){
+      return lemons.push(city);
+    }
+  });
+  return lemons;
 };
 
 /* ------------------------------------------------------------------------------------------------
