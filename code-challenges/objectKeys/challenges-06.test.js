@@ -69,11 +69,14 @@ let $ = createSnippetWithJQuery(`
 </script>
 `);
 const templatingWithMustache = () => {
-  let arr = [];
-characters.forEach(person =>{
-    let jake = Mustache.render()
-})
-};
+    let arrrr = [];
+    characters.forEach( person =>{
+      const template = $('#template').html();
+      let jake = Mustache.render(template, person);
+      arrrr.push(jake);
+    })
+    return arrrr;
+  };
 //   characters.forEach(person =>{
 //       new Temple(person);
 //       let html = Mustache.render(createSnippetWithJQuery, new Temple(person));
@@ -137,9 +140,17 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
-
-};
+        let parentArray = [];
+      
+        arr.forEach(person => {
+          if (Object.values(person.children)) {
+            parentArray.push(person.name);
+          }
+        })
+        if (parentArray.includes(character)) {
+          return true;
+        } else return false;
+      };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -235,7 +246,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return true for characters that have children', () => {
     expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
   });
