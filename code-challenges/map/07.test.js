@@ -20,7 +20,7 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const addTea = () => {
-  // Solution code here...
+return   $('ul').append('<li>tea</li>');
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -34,8 +34,14 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 ------------------------------------------------------------------------------------------------ */
 
 const forLoopTwoToThe = (arr) => {
-  // Solution code here...
+let myray= [];
+    for(let i = 0; i< arr.length; i++){ 
+    
+    myray.push(Math.pow(2, arr[i]));
+    }
+    return myray;
 };
+//I swear I did this one like 5 correct ways before I realized I was looking at the wrong test.
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -44,7 +50,11 @@ Write a function named forEachTwoToThe that produces the same output as your for
 ------------------------------------------------------------------------------------------------ */
 
 const forEachTwoToThe = (arr) => {
-  // Solution code here...
+ let jill = []; 
+ arr.forEach(number => {
+    jill.push(Math.pow(2, number));
+ })
+ return jill;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -54,7 +64,7 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 ------------------------------------------------------------------------------------------------ */
 
 const mapTwoToThe = (arr) => {
-  // Solution code here...
+  return arr.map(number => Math.pow(2, number));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,7 +78,9 @@ For example: charCode(['h','i']) returns [104, 105].
 ------------------------------------------------------------------------------------------------ */
 
 const charCode = (arr) => {
-  // Solution code here...
+  return arr.map((letter, index, array) => {
+      return letter.charCodeAt(0);
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -82,7 +94,17 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 ------------------------------------------------------------------------------------------------ */
 
 const evenOdd = (arr) => {
-  // Solution code here...
+  let ansArr= [];
+  arr.forEach(number => {
+      if(number % 1 === 0){
+          if (number % 2 ===0){
+              ansArr.push('even');
+          }
+          else ansArr.push('odd');
+      }
+      else ansArr.push('N/A');
+  })
+  return ansArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -229,14 +251,14 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return an array containing the character code for each letter', () => {
     expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1'])).toStrictEqual([ 67, 111, 100, 101, 51, 48, 49 ]);
     expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1']).length).toStrictEqual(7);
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return an array containing the keys from an object', () => {
     expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541])).toStrictEqual([ 'odd', 'even', 'even', 'even', 'odd', 'odd', 'even', 'odd' ]);
     expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541]).length).toStrictEqual(8);
