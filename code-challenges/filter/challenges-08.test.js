@@ -61,8 +61,9 @@ Write a function named notInFirstArray that, given two arrays as input, uses fil
 For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
-const notInFirstArray = (forbiddenValues, arr) => arr.filter(word => !forbiddenValues.includes(word));
-
+const notInFirstArray = (forbiddenValues, arr) => {
+  return arr.filter(word => !forbiddenValues.includes(word));
+}
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
 
