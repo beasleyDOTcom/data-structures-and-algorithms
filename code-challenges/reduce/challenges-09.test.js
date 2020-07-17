@@ -25,8 +25,8 @@ const createServer = () => {
   const express=require('express');
   const app=express();
 
-  app.get("/events", getCurrentEvents);
-  // Solution code here...
+  // Routes go here
+  app.get('/events', getCurrentEvents)
 
   var server = app.listen(3301, function () {
     var port = server.address().port;
@@ -160,21 +160,23 @@ const currentEvents = {
 }
 
 function getCurrentEvents(request, response){
-  let eventStuff = mapCurrentEvents(request);
-  response.send(eventStuff);
+  let goodtimes = mapCurrentEvents();
+  response.status(200).send(goodtimes);
 }
-
-const mapCurrentEvents = (arr) => {
-    arr.map( eventually => new Event(eventually));    
+const mapCurrentEvents = () => {
+  let jonas = currentEvents.news.map(eventually => {
+      return new Event(eventually)
+  });
+  return jonas;
 }
 
 function Event(obj){
-    this.author = obj.author;
-    this.categories = obj.category;
-    this.summary = obj.description;
-    this.img_url = obj.image;
-    this.date = obj.published;
-    this.title = obj.title;
+  this.author = obj.author;
+  this.categories = obj.category;
+  this.summary = obj.description;
+  this.img_url = obj.image;
+  this.date = obj.published;
+  this.title = obj.title;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -185,9 +187,7 @@ Write a function named countNumberOfElements that, given an array as input, uses
 Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
-const countNumberOfElements = (arr) => {
-  // Solution code here...
-};
+const countNumberOfElements = (arr) => arr.reduce((a, v, i) => i+1);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -246,7 +246,11 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+ const al = arr.reduce((acc,val,i) => {
+acc.push(val.name);
+return acc;
+}, []);
+  return al;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -258,7 +262,13 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // Solution code here...
+  let jason = str.length -1;
+  let lilly = str.split('').reduce((acc, val, index) => {
+      let jill = jason - index;
+      acc.push(str[jill]);
+      return acc;  
+  },[])
+return lilly.join('');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -447,20 +457,20 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return the length of the array', () => {
     expect(countNumberOfElements([1, 2, 3, 4, 5])).toStrictEqual(5);
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return an array continaing the names of the characters', () => {
     expect(returnNames(starWarsData)).toStrictEqual([ 'Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader', 'Leia Organa' ]);
     expect(returnNames(starWarsData).length).toStrictEqual(5);
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return the string with the characters in reverse order', () => {
     expect(reversedString('Code 301')).toStrictEqual('103 edoC');
   });
