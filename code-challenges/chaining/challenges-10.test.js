@@ -89,18 +89,18 @@ This function should then raise 2 to the power of the resulting numbers, returni
 For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
-const divisibleByFiveTwoToThePower = (input) => {
-    let jane = [];
-    input.map(arr => {
-        if()
-    })
-
-
-    //   const numbersArr = [];
-//   input.reduce((acc, val, index) => {
-//       return acc.push(val.reduce)
-//   }, [])
-};
+let divisibleByFiveTwoToThePower = (arr) => {
+    let funPuzzles = arr.map(singleArr => {
+  let divByFive = singleArr.reduce((answerSoFar, value) => {
+    if(value % 5 === 0 && typeof value === "number"){
+      answerSoFar.push(Math.pow(2,value));
+    }
+    return answerSoFar;
+  }, []);
+  return divByFive;
+    });
+    return funPuzzles;
+  };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stetch Goal
