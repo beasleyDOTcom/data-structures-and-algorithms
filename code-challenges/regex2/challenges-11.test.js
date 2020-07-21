@@ -12,7 +12,12 @@ Note the space in between first and last names.
 You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
-  // Solution code here...
+    let married = people.map(person => {
+    let tempArr = [];
+    tempArr.push(person.firstName, person.lastName)
+    return tempArr.join(' ');
+  })
+  return married;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -24,7 +29,8 @@ If the PIN is four numerical digits long, return true. Otherwise, return false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePin = (pin) => {
-  // Solution code here...
+  let regex = /\b\d{4}\b/;
+    return regex.test(pin);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -44,7 +50,8 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  // Solution code here...
+  let regex = /^\w+.{0,1}\w+@[a-z]*[A-Z]*.(com|net|org)\b/g;
+  return regex.test(email);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -69,7 +76,9 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
-  // Solution code here...
+  let regex = /^\(\d{3}\)|^\d{3}(-?|\s?)\d{3}(-?|\s)\d{4}$/;
+  let regex2 = /\(?\d{3}\)?(-?|\s?)\d{3}(-?|\s)\d{4}\b$/;
+  return regex.test(phoneNumber);
 };
 
 /* ------------------------------------------------------------------------------------------------
