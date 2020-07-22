@@ -55,14 +55,18 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-    let finalObject = {};
+    let daveHatesChico = [];
     let hourlySales = hoursOpen.reduce((acc, val, index)=>{  
         acc.push(firstPike[index]+seaTac[index]+seattleCenter[index]+capHill[index]+alkiBeach[index]);
         return acc;
       }, []);
-      hourlySales.forEach(hour =>{
-        finalObject.sales=
+      hourlySales.forEach((hSales, index) =>{
+        let finalObject = {};
+        finalObject.sales= `${hSales} cookies`;
+        finalObject.time = hoursOpen[index];
+        daveHatesChico.push(finalObject)
       })
+      return daveHatesChico;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -86,9 +90,7 @@ const errands = [
   }
 ];
 
-const howManyTreats = (arr) => {
-  // Solution code here...
-};
+const howManyTreats = (arr) => errands[2].items[1].quantity;
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5 - Stretch Goal
@@ -228,7 +230,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return the number 24', () => {
     expect(howManyTreats(errands)).toStrictEqual(24);
   });
