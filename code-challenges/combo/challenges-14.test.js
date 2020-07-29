@@ -34,7 +34,10 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  arr.reduce((acc, val, index) =>{
+    return acc.push(val.slice(0,1).toUpperCase()+val.slice(1, val.length))
+    return acc;
+  }, [])
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -109,8 +112,13 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  let bigger=arr.filter((val, index, array) => {
+    if(array[0].mass < val.mass){
+return val.name;
+    } 
+  })
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -213,7 +221,7 @@ describe('Testing challenge 1', function () {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should convert each word to title case', () => {
     const words = ['apple', 'banana', 'MacGyver'];
     expect(toTitleCase(words)).toStrictEqual(['Apple', 'Banana', 'MacGyver']);
@@ -222,7 +230,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return only characters that are bigger than Luke', () => {
     expect(biggerThanLuke(starWarsData)).toStrictEqual('Darth Vader - Pex Kylar');
     expect(biggerThanLuke([])).toStrictEqual('');
