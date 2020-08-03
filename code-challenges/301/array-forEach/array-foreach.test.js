@@ -9,11 +9,11 @@ Then, write a function named speaker that takes in a string and a callback funct
 ------------------------------------------------------------------------------------------------ */
 
 const greeting = (word) => {
-  // Solution code here...
+  return word.toUpperCase();
 };
 
 const speaker = (message, callback) => {
-  // Solution code here...
+    return greeting(message);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -33,11 +33,13 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  // Solution code here...
-};
-
+    arr.push(value);
+}
 const addNumbers = (num, arr, times, callback) => {
-  // Solution code here...
+    for(let i=0; i< times; i++){
+    callback(arr, num);
+  }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,7 +61,11 @@ This function should use forEach to populate your grocery list based on the stor
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  // Solution code here...
+  let avay = [];
+    availableItems.forEach(item => {
+      item.available ? avay.push(item.name): console.log('nope'); 
+  })
+  return avay;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -77,7 +83,22 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  // Solution code here...
+    let output =[];
+  arr.forEach(numba => {
+      if(numba % 3===0 && numba %5 ===0){
+        output.push('Fizz Buzz')
+      }
+      else if (numba %3 ===0){
+          output.push('Fizz')
+      }
+      else if(numba % 5 ===0){
+          output.push('Buzz')
+      }
+      else{
+          output.push(numba)
+      }
+  })
+  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
