@@ -14,10 +14,10 @@ const createServer = () => {
   app.get('/', (request, response) => {
       response.status(200).send("happy times")
   })
-  app.get('/', (request, response) => {
-    response.status(200).send("happy times")
-})
-
+  app.delete('/things/1', (request, response) =>{
+    response.status(405).send('method not alllowwwed')
+  }
+  )
   var server = app.listen(3000, function () {
     var port = server.address().port;
     console.log('Example app listening at port', port);
@@ -34,10 +34,14 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  arr.reduce((acc, val, index) =>{
-    return acc.push(val.slice(0,1).toUpperCase()+val.slice(1, val.length))
+  return arr.reduce((acc, val, index) =>{
+  //  acc.push(val.slice(0,1).toUpperCase()+val.slice(1, val.length))
+  let meg = val.split('');
+  meg[0] = meg[0].toUpperCase();
+  acc.push(meg.join(''))
     return acc;
   }, [])
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -112,12 +116,20 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  let bigger=arr.filter((val, index, array) => {
-    if(array[0].mass < val.mass){
-return val.name;
+  let help= arr.filter((val, index, array) => {
+    if(parseInt(val.mass) > parseInt(array[0].mass)){
+      return val.name;
     } 
+    else {
+      return false;
+      }
   })
-};
+   let meg = help.reduce((acc, val, index)=>{
+ acc.push(val.name)
+ return acc; 
+}, []);
+return meg.join(' - ');
+}
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -135,7 +147,27 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  if(property==='name'){
+    arr.sort((a,b)=>{
+    if(a.name.toUpperCase() > b.name.toUpperCase()){
+      return 1;
+    }
+    else if (b.name.toUpperCase() > a.name.toUpperCase()){
+      return -1;
+    }
+    })
+  }
+  else if(property==='price'){
+    arr.sort((a,b) =>{
+      if(a.price > b.price){
+        return 1;
+      }
+      else if (b.price > a.price){
+        return -1; 
+      }
+    })
+  }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -237,7 +269,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should sort items by a price', () => {
 
     expect(sortBy('price', [
