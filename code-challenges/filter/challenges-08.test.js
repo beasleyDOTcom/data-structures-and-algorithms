@@ -12,6 +12,7 @@ const createServer = () => {
   const express=require('express');
   const app=express();
   app.get('/hello', sayHello);
+  app.get('*', oops)
 
   var server = app.listen(3301, function () {
     var port = server.address().port;
@@ -19,10 +20,12 @@ const createServer = () => {
   });
   return server;
 };
-
+function oops(request, response){
+  response.status(404).send();
+}
 
 function sayHello(request, response){
-   response.send('hello from the back-end');
+   response.status(200).send('hello from the back-end');
 }
 
 /* ------------------------------------------------------------------------------------------------
