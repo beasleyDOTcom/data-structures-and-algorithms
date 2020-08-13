@@ -5,7 +5,7 @@ function binarySearch(arr, kilmer){
     let lastPlace = arr.length-1;
     
     while(lastPlace>=firstPlace){
-       middle = Math.floor((firstPlace + lastPlace)/2);
+       let middle = Math.floor((firstPlace + lastPlace)/2);
       if(kilmer === arr[middle]){
         return middle;
       }
@@ -18,3 +18,4 @@ function binarySearch(arr, kilmer){
     };
      return -1;
     }; 
+    module.exports = binarySearch;
