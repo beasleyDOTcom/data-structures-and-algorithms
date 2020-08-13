@@ -17,3 +17,13 @@ I don't think I took very much time for this.
 
 ## Solution
 whiteBoard is located in same folder as code challenge.
+
+# day 3 array-binary-search
+Today's challenge will involve building a function that uses the binary search method to find a value in the array that matches the key passed in and return that index, or -1 if it does not exist.
+
+### challenge description
+Write a function called BinarySearch which takes in 2 parameters: a sorted array and the search key. Without utilizing any of the built-in methods available to your language, return the index of the array’s element that is equal to the search key, or -1 if the element does not exist.
+### Approach and Efficiency
+We are going to write down our goals. Then try to narrow in our scope until we have a step by step process we can follow to the finish line.
+### solution
+whiteBoard is located in same folder as code challenge.
