@@ -12,4 +12,4 @@ Any exceptions or errors that come from your code should be semantic, capturable
 Be sure to follow your language/frameworks standard naming conventions (e.g. C# uses PascalCasing for all method and class names).
 
 ## Approach & Efficiency
-Started in class and then worked on it step by step asking for help along the way when I got stuck
+Started in class and then worked on it step by step asking for help along the way when I got stuck which helped a lot.
