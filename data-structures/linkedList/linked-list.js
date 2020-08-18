@@ -14,7 +14,7 @@ class LinkedList{
     }
 
     append(value){
-        const newNode = new Node(value, null);
+        const newNode = new Node(value);
         //add to the tail end  of the linked list
         if(!this.head){
             this.head = newNode;
@@ -22,15 +22,39 @@ class LinkedList{
         }
        let currentNode = this.head;
         
-       while(currentNode.next !== null){
+       while(currentNode.next){
             currentNode = currentNode.next;
         }
 
         currentNode.next = newNode;
+        // by now we know that currentNode is a node, in fact -- the last node.
+    }
 
-        // by now we know that currentNode is a node, in fact -- the alst node.
-
-
+    insertBefore(targetValue, value){
+        let currentNode = this.head;
+        console.log(currentNode.value, value, targetValue)
+        if(this.head.value === targetValue){
+            return this.insert(value, this.head);
+        }
+        while(currentNode.next){
+            if(currentNode.next.value === targetValue){
+                currentNode.next = new Node(value, currentNode.next);
+                return;
+            }
+            currentNode = currentNode.next;
+        }
+    }
+    insertAfter(targetValue, value){
+        let currentNode = this.head;    
+        while(currentNode.next){
+            if(currentNode.value === targetValue){
+                currentNode.next = new Node(value, currentNode.next);
+                return;
+            }
+            currentNode = currentNode.next;
+        }
+        return this.append(value);
+        
     }
     //includes
     includes(value){
@@ -62,7 +86,7 @@ class LinkedList{
 
 class Node{
 
-    constructor(value, next = undefined){
+    constructor(value, next = null){
         this.value = value;
         this.next = next;
     }

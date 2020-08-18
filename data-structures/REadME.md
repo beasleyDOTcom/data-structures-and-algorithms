@@ -13,3 +13,17 @@ Be sure to follow your language/frameworks standard naming conventions (e.g. C# 
 
 ## Approach & Efficiency
 Started in class and then worked on it step by step asking for help along the way when I got stuck which helped a lot.
+
+
+# challenge
+- [x] Can successfully add a node to the end of the linked list
+- [x] Can successfully add multiple nodes to the end of a linked list
+- [x] Can successfully insert a node before a node located i the middle of a linked list
+- [x] Can successfully insert a node before the first node of a linked list
+- [x] Can successfully insert after a node in the middle of the linked list
+- [x] Can successfully insert a node after the last node of the linked list
+
+## approach
+We used the whiteboard a lot for this challenge. I found it especially hard to solve these problems without visualizing each part of the process. 
+
+
