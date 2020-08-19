@@ -110,3 +110,34 @@ it('Can successfully insert a node after the last node of the linked list', () =
     expect(ll.head.next.next.next.value).toBe('peaches');
     // expect(ll.head.next.next.next).toBe(null);
 });
+
+it('Can get kth from end of list', () => {
+    const ll = new LinkedList();
+    ll.append(1);
+    ll.append(2);
+    ll.append(3);
+    ll.append(4);
+    ll.append(5);
+    ll.append(6);
+    expect(ll.nthFromTheEnd(3)).toBe(3);
+});
+
+it('where k is greater than length of list', () => {
+    const ll = new LinkedList();
+    ll.append(1);
+    ll.append(2);
+    ll.append(3);
+    ll.append(4);
+    ll.append(5);
+    ll.append(6);
+    expect(ll.nthFromTheEnd(9)).toThrowError('your query is unsupported');
+});
+// expect(() => sum('junk', null)).toThrowError('a and b must be numeric');
+// Where k is greater than the length of the linked list
+// Where k and the length of the list are the same
+// Where k is not a positive integer
+// Where the linked list is of a size 1
+// “Happy Path” where k is not at the end, but somewhere in the middle of the linked list
+// console.log('0 index from the rear (last one): ', testLL.nthFromTheEnd(0)===0);
+// console.log('3rd index from the rear: ',testLL.nthFromTheEnd(3)===3);
+// console.log('Error tester: ',testLL.nthFromTheEnd(6)==="you query is unsupported");

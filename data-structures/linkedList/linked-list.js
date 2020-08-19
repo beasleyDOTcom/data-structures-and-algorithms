@@ -4,6 +4,24 @@ class LinkedList{
     constructor(){
         this.head = null;
     }
+    nthFromTheEnd(target){
+        let current = this.head; 
+        let counter = 0;  
+        while(current){  //n n=length of linkedlist
+          counter++; 
+          current = current.next; 
+        }
+        if(target>counter){
+          throw new Error('your query is unsupported')
+        } 
+        let goal = this.head;
+        let targetLocation = counter-target;
+        for(let i = 1; i<targetLocation; i++){ //n n n=length of linkedlist
+          goal = goal.next;
+        }
+        return goal.value;
+      }
+
     //perhaps better named insert new head
     insert(value){
 
