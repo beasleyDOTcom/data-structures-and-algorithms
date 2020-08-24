@@ -9,7 +9,7 @@ class Stack{
         return this.top = new Node(value, this.top);
     }    
 
-    peak(){
+    peek(){
         if(this.isEmpty()){
             throw new RangeError('Cannot call isEmpty() on empty stack')
         }
@@ -20,7 +20,9 @@ class Stack{
         if(this.isEmpty()){
             throw new RangeError('Cannot pop from empty stack');
         }
-        return this.top.value;
+        let popper = this.top.value;
+        this.top = this.top.next;
+        return popper;
     }
 
 

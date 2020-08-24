@@ -13,19 +13,12 @@ it('should instantiate an empty stack', () => {
 it('Can successfully push onto a stack', () => {
     const stack = new Stack();
     stack.push('apples');
-    expect(stack.peak()).toBe('apples');
+    expect(stack.peek()).toBe('apples');
 });
 //push peak pop isempty
 it('should return true if the stack is empty', () => {
     const stack = new Stack();
     expect(stack.isEmpty()).toBe(true);
-
-});
-
-it('should throw an error if isEmpty() is called on an empty stack', () => {
-    const stack = new Stack();
-    expect(() => stack.isEmpty()).toThrow(RangeError);
-    expect(() => stack.isEmpty()).toThrow('Cannot call isEmpty on empty stack');
 
 });
 
@@ -38,8 +31,16 @@ it('should return false if the stack is not empty', () => {
 
 it('should throw an error if pop is called on an empty stack', () => {
     const stack = new Stack();
-    expect(() => stack.pop()).toThrow(RangeError);
+  
+    expect(() => stack.peek()).toThrow('Cannot peek empty list');
+    expect(() => stack.peek()).toThrow(RangeError);
+
+});
+it('should throw an error if peek is called on an empty stack', () => {
+    const stack = new Stack();
+  
     expect(() => stack.pop()).toThrow('Cannot pop from empty stack');
+    expect(() => stack.pop()).toThrow(RangeError);
 
 });
 
