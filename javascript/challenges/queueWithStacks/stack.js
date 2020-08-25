@@ -20,9 +20,10 @@ class Stack{
         if(this.isEmpty()){
             throw new RangeError('Cannot pop from empty stack');
         }
-        let popper = this.top.value;
+        let popper = this.top;
         this.top = this.top.next;
-        return popper;
+        popper.next=null;
+        return popper.value;
     }
 
 
