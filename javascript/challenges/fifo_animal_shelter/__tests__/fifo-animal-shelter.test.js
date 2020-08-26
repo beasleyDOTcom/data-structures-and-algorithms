@@ -37,3 +37,10 @@ it('should sift through all the other dogs and find the cat', () => {
     animal.enqueue('dog');
     expect(animal.dequeue('cat')).toBe('cat');
 });
+
+it('should sift through all the other dogs and find the cat', () => {
+    const animal = new Animal;
+    animal.enqueue('cat');
+    animal.enqueue('dog');
+    expect(animal.dequeue('cat')).toBe('cat');
+});

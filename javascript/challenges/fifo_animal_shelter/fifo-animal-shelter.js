@@ -16,7 +16,7 @@ class AnimalShelter{
     }
     dequeue(preference){
         let regex = /(cat)|(dog)/i;
-        let temp = 'haha';
+        let temp = null;
         if(!regex.test(preference)){
             return null;
         }
@@ -34,7 +34,8 @@ class AnimalShelter{
           
             this.stack1.push(this.stack2.pop())
         }
-        return temp ? temp.value: temp;
+        console.log('this is temp----------------',temp)
+        return temp;
     }
 }
 module.exports = AnimalShelter;
