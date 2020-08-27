@@ -9,7 +9,7 @@ class AnimalShelter{
     enqueue(animal){
         let regex = /(cat)|(dog)/i;
         if(!regex.test(animal)){
-            throw new Error('NOPE');
+                throw new Error('NOPE');
         }
         return this.stack1.push(animal);
         
@@ -25,7 +25,6 @@ class AnimalShelter{
         }
         
         while(this.stack2.top){
-            console.log('inside of last loop', this.stack2.top.value)
             if(this.stack2.top.value == preference){
                 if(!temp){
                 temp = this.stack2.pop();
@@ -34,7 +33,6 @@ class AnimalShelter{
           
             this.stack1.push(this.stack2.pop())
         }
-        console.log('this is temp----------------',temp)
         return temp;
     }
 }
