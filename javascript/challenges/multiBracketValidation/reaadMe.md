@@ -28,3 +28,5 @@ Input	Output	Why
 [}	FALSE	error closing }. Doesn’t match opening (.
 
 # plan
+When we planned out our solution and developed our whiteboard we didn't realize the implications of the last input output. 
+So I tried doing it a different way, but I got kind of lost in the weeds and couldn't find my way out.
