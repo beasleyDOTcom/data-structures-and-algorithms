@@ -74,7 +74,6 @@ class BinaryTree{
       let newNode = new Node(value);
       if(!this.root){
         this.root = newNode;
-        console.log('this on line 77', this)
         return this;
       }
       let current = this.root;
@@ -82,19 +81,17 @@ class BinaryTree{
         if(current.value < value){
           if(!current.right){
             current.right=newNode;
-            console.log('this on line 84', this)
             return this
           }
 
-          current = this.root.right;
+          current = current.right;
         }
         else{ 
           if(!current.left){
-            console.log('this on line 91', this)
             current.left = newNode;
             return this;
           }
-          current = this.root.left;
+          current = current.left;
         }
       }
 

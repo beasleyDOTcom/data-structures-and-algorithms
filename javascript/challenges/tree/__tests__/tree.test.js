@@ -40,6 +40,7 @@ it('should place the correct value in the tree', () => {
   BST.add(11)
   expect(BST.contains(11)).toBeTruthy();
 });
+
 it('should place a number in the correct place of a binary tree', () => {
   const BST = new BinarySearchTree();  
   BST.add(9);
@@ -47,6 +48,33 @@ it('should place a number in the correct place of a binary tree', () => {
   BST.add(5);
   BST.add(11)
   expect(BST.root.value).toBe(9);
+});
+
+it('should place a number in the correct place of a binary tree', () => {
+  const BST = new BinarySearchTree();  
+  BST.add(9);
+  BST.add(7);
+  BST.add(5);
+  BST.add(11)
+  expect(BST.root.left.value).toBe(7);
+});
+
+it('should place a number in the correct place of a binary tree', () => {
+  const BST = new BinarySearchTree();  
+  BST.add(9);
+  BST.add(7);
+  BST.add(5);
+  BST.add(11)
+  expect(BST.root.right.value).toBe(11);
+});
+
+it('should place a number in the correct place of a binary tree', () => {
+  const BST = new BinarySearchTree();  
+  BST.add(9);
+  BST.add(7);
+  BST.add(5);
+  BST.add(11)
+  expect(BST.root.left.left.value).toBe(5);
 });
 // const bananas = new Node('b', new Node('happy'), new Node('camper', new Node('sad'), new Node('pat')));
 // const cucumbers = new Node('c', new Node('pears'), new Node('plabian'));
