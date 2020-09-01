@@ -4,6 +4,7 @@ class BinaryTree{
     constructor(root=null){
       this.root = root; // a node
     }
+    
     inOrder(){
         const output= [];
         function _inOrder(root){
@@ -64,6 +65,27 @@ class BinaryTree{
       this.right = right;
     }
   }
+  
+  class FindMax extends BinaryTree{
+    constructor(root){
+      super(root);
+      this.root = root;
+    }
+    findMaximumValue(tree){
+
+      var maxValue = -99;
+      function _findMax(root){
+        if(!root){return}
+        else if(root.value > maxValue){
+          maxValue = root.value;
+        }
+        _findMax(root.left);
+        _findMax(root.right); 
+      }
+      _findMax(tree);
+      return maxValue;
+    }
+  }
   class BinarySearchTree extends BinaryTree{
     constructor(root){
       super(root);
@@ -94,10 +116,11 @@ class BinaryTree{
           current = current.left;
         }
       }
-
-
-
     }
+
+
+
+
 
         //adds a new node with that value in the correct loaction in the binary search tree.
         //add a value to a node and then place the node in the right location
@@ -203,4 +226,4 @@ class BinaryTree{
   // const results = `${tree.preOrder()} preorder ${tree.inOrder()} inorder, and then post order: ${tree.postOrder()}`;
 
   //   console.log(results);
-    module.exports = {BinarySearchTree, Node};
+    module.exports = {BinarySearchTree, Node, FindMax};

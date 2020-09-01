@@ -1,5 +1,5 @@
 'use strict'
-const {BinarySearchTree, Node} = require('../tree.js');
+const {BinarySearchTree, Node, FindMax} = require('../tree.js');
 const tree = new Node('a', new Node('b', new Node('d'), new Node('e')), new Node('c', new Node('f')));
 const binary = new Node(23, new Node(8, new Node(4), new Node(16, new Node(15), new Node(22))), new Node(42, new Node(27), new Node(85,null, new Node(105))))
 // Can successfully instantiate an empty tree
@@ -76,9 +76,13 @@ it('should place a number in the correct place of a binary tree', () => {
   BST.add(11)
   expect(BST.root.left.left.value).toBe(5);
 });
-// const bananas = new Node('b', new Node('happy'), new Node('camper', new Node('sad'), new Node('pat')));
-// const cucumbers = new Node('c', new Node('pears'), new Node('plabian'));
-// const apples = new Node('a', bananas, cucumbers);
-// const results = `${tree.preOrder()} preorder ${tree.inOrder()} inorder, and then post order: ${tree.postOrder()}`;
 
-//   console.log(results);
+describe('Find Max', () => {
+  it('should take in a tree and return the highest number in the tree', () => {
+    const BST = new FindMax();  
+   
+    expect(BST.findMaximumValue(binary)).toBe(105);
+  });
+
+
+});
