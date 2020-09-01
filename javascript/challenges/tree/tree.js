@@ -4,6 +4,7 @@ class BinaryTree{
     constructor(root=null){
       this.root = root; // a node
     }
+    
     inOrder(){
         const output= [];
         function _inOrder(root){
@@ -64,6 +65,27 @@ class BinaryTree{
       this.right = right;
     }
   }
+  
+  class FindMax extends BinaryTree{
+    constructor(root){
+      super(root);
+      this.root = root;
+    }
+    findMaximumValue(tree){
+
+      var maxValue = -99;
+      function _findMax(root){
+        if(!root){return}
+        else if(root.value > maxValue){
+          maxValue = root.value;
+        }
+        _findMax(root.left);
+        _findMax(root.right); 
+      }
+      _findMax(tree);
+      return maxValue;
+    }
+  }
   class BinarySearchTree extends BinaryTree{
     constructor(root){
       super(root);
@@ -74,7 +96,6 @@ class BinaryTree{
       let newNode = new Node(value);
       if(!this.root){
         this.root = newNode;
-        console.log('this on line 77', this)
         return this;
       }
       let current = this.root;
@@ -82,25 +103,24 @@ class BinaryTree{
         if(current.value < value){
           if(!current.right){
             current.right=newNode;
-            console.log('this on line 84', this)
             return this
           }
 
-          current = this.root.right;
+          current = current.right;
         }
         else{ 
           if(!current.left){
-            console.log('this on line 91', this)
             current.left = newNode;
             return this;
           }
-          current = this.root.left;
+          current = current.left;
         }
       }
-
-
-
     }
+
+
+
+
 
         //adds a new node with that value in the correct loaction in the binary search tree.
         //add a value to a node and then place the node in the right location
@@ -206,4 +226,4 @@ class BinaryTree{
   // const results = `${tree.preOrder()} preorder ${tree.inOrder()} inorder, and then post order: ${tree.postOrder()}`;
 
   //   console.log(results);
-    module.exports = {BinarySearchTree, Node};
+    module.exports = {BinarySearchTree, Node, FindMax};
