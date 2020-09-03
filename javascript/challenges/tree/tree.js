@@ -226,4 +226,4 @@ class BinaryTree{
   // const results = `${tree.preOrder()} preorder ${tree.inOrder()} inorder, and then post order: ${tree.postOrder()}`;
 
   //   console.log(results);
-    module.exports = {BinarySearchTree, Node, FindMax};
+    module.exports = {BinarySearchTree, Node, FindMax, BinaryTree};
