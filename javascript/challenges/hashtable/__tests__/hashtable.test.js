@@ -29,7 +29,7 @@ it('should Successfully return null for a key that does not exist in the hashtab
 });
 
 it('it should Successfully retrieve a value from a bucket within the hashtable that has a collision', () => {
-    const table = new Hashtable();
+    const table = new Hashtable(2);
     // table.findCollision('tac');
     // table.findCollision('cat')
     table.add('tac','first in hashtable');
