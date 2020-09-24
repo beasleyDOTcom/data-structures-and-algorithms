@@ -12,3 +12,5 @@ Avoid utilizing any of the library methods available to your language.
 Write at least three test assertions for each method that you define.
 
 # whiteboard: https://app.conceptboard.com/board/kauu-ic4y-y1so-dq3z-eshf
+
+# Big O of time: O n*5.5 ( .5 because the includes only itererates through keys) 

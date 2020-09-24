@@ -9,6 +9,7 @@ class Hashtable {
     add(key, value) {
         const index = this.hash(key);
         const contentsOfBucket = this.buckets[index];
+        this.count += 1;
         if (contentsOfBucket === undefined) {
             this.buckets[index] = [[key, value]];
 
@@ -53,7 +54,7 @@ class Hashtable {
     hash(key) {
         let chars = 0;
         for (let i = 0; i < key.length; i++) {
-            console.log('chars is ', chars)
+            // console.log('chars is ', chars)
 // I HAD TO COMMENT OUT THE END OF LINES 57 AND 60 IN ORDER TO TEST THE HANDLING OF COLLISIONS
             if(key.charCodeAt(i) === 0){
                 chars += 601;
@@ -65,7 +66,7 @@ class Hashtable {
                 chars += key.charCodeAt(i) * i * i;
               
             }
-            console.log('chars is now: ', chars)
+            // console.log('chars is now: ', chars)
         }
         chars = chars * 599;
 
