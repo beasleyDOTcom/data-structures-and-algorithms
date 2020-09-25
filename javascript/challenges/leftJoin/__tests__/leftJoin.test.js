@@ -1,4 +1,4 @@
-const Hashtable = require('../../hashtable/hashtable.js');
+const Hashtable = require('../hashtable.js');
 const leftJoin = require('../leftJoin.js');
 
 it('should live and have mixed results', () => {
