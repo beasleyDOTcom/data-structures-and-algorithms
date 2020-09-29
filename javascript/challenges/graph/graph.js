@@ -37,7 +37,6 @@ class Graph{
     Size(){
         console.log('before letsize')
        let size =  this.vertexies.size;
-       console.log('==============================', size)
         return size;
     }
   

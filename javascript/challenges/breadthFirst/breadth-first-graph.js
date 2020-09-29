@@ -8,6 +8,7 @@ function breadGraph(node){
     let stuckInLine = new Queue();
 
     stuckInLine.enqueue(node);
+    
     seen.add(node);
     
     function _getNeighbors(person){
@@ -19,8 +20,9 @@ function breadGraph(node){
 
     while(!stuckInLine.isEmpty()){
         let front = stuckInLine.dequeue();
-        console.log('this is front', front)
-        breadArray.push(front);
+        console.log(front.value, 'front . neighbors')
+        // console.log('this is front', front)
+        breadArray.push(front.value);
         front.GetNeighbors().forEach(_getNeighbors);
         
 
@@ -34,8 +36,8 @@ function breadGraph(node){
 
     }
 
+// console.log('this is the bread array ', breadArray)
 console.log('this is the bread array ', breadArray)
-
     return breadArray;
 }
 
