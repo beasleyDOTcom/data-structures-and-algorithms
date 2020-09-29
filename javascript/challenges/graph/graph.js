@@ -17,9 +17,9 @@ class Graph{
   // Returns the added node
     AddEdge(a, b, weight){
       if(this.vertexies.has(a) && this.vertexies.has(b)){
-      let newEdge = new Edge(a, b, weight)
-      a.addEdge(newEdge);
-      b.addEdge(newEdge);
+      // let newEdge = new Edge(a, b, weight)
+      a.addEdge(b);
+      b.addEdge(a);
       }
       else {throw new Error();}
       
@@ -53,19 +53,19 @@ class Graph{
       // Returns a collection of edges connected to the given node
   // Takes in a given node
   // Include the weight of the connection in the returned collection
-      let allMyUniqueNeighbors = new Set();
-      for(edge in this.neighbors){
-        if(!edge.firstNode === this){
-          allMyUniqueNeighbors.add(edge.fistNode);
-        }
-        if(!edge.secondNode === this){
-          allMyUniqueNeighbors.add(edge.secondNode)
-        }
-      }
-    return allMyUniqueNeighbors;
+      // let allMyUniqueNeighbors = new Set();
+      // for(edge in this.neighbors){
+      //   if(!edge.firstNode === this){
+      //     allMyUniqueNeighbors.add(edge.fistNode);
+      //   }
+      //   if(!edge.secondNode === this){
+      //     allMyUniqueNeighbors.add(edge.secondNode)
+      //   }
+      // }
+    return this.neighbors;
     }
-    addEdge(edge){
-      this.neighbors.add(edge)
+    addEdge(node){
+      this.neighbors.add(node)
     }
   
   }
@@ -80,3 +80,13 @@ class Graph{
   }
   
 module.exports = Graph;
+
+/*
+breadth first means getting everything that is closest to the top of the tree, then go another level down
+you can use a set to add "have visited" nodes to it and then 
+do a set.has(node you're evaluating)
+or enqueue everything nearest you then dequeue them one at a time
+if the item dequeued has a child that was not visited enqueue that child. 
+
+
+*/
