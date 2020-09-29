@@ -25,6 +25,11 @@ class Queue{
 
         return result;
     }
+    
+    isEmpty(){
+        return !this.front;
+    }
+   
 }
 
 class Node {
