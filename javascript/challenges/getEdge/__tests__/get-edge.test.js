@@ -36,10 +36,22 @@ it('should return a correct dollar ammount for each flight', () => {
     let route1 = route.AddEdge(sea, pdx, 99);
     let route2 = route.AddEdge(sea, ams, 2999);
     let route3 = route.AddEdge(ams, msy, 202);
-    console.log(route.GetNeighbors(sea))
+    // console.log(route.GetNeighbors(sea))
 
     expect(getEdge(['SEA', 'AMS', 'MSY'], route)).toStrictEqual('True, $3300');
 });
 
+
+
+
+
+
 // [ Edge { destination: Node { value: 'PDX' }, weight: 99 },
 // Edge { destination: Node { value: 'AMS' }, weight: 2999 } ]
+// {
+//     Node { value: 'SEA' },
+//     Node { value: 'PDX' },
+//     Node { value: 'AMS' },
+//     Node { value: 'DFW' },
+//     Node { value: 'MSY' } 
+// }
