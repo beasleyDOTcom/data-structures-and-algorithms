@@ -51,7 +51,9 @@ class Graph{
     }
 
     GetNeighbors(node){
-       return this.vertexies.get(node);
+       let billy = this.vertexies.get(node);
+    //    console.log('this is billy', billy)
+       return billy;
     }
 }
 
