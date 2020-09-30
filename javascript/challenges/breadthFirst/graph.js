@@ -7,8 +7,6 @@ class Graph{
     AddNode(val){
       let newNode = new Node(val);
       this.vertexies.add(newNode);
-      // console.log('this is the vertexies', this.vertexies)
-      // console.log('this is new node', newNode)
      return newNode;
     }
     //.has .get .set will be your friends
@@ -35,7 +33,7 @@ class Graph{
   // Returns all of the nodes in the graph as a collection (set, list, or similar)
     
     Size(){
-        console.log('before letsize')
+        // console.log('before letsize')
        let size =  this.vertexies.size;
       //  console.log('==============================', size)
         return size;

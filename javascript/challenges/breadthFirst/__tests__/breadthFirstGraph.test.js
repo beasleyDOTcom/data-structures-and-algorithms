@@ -3,7 +3,7 @@ const Queue = require('../queue.js');
 const Bread = require('../breadth-first-graph');
 
 it('should return true if tia has kat as a neighbor', () => {
-    friends = new Graph();
+    let friends = new Graph();
     let kat = friends.AddNode('kat')
     let tia = friends.AddNode('tia')
     let cas = friends.AddNode('cas')
@@ -12,7 +12,7 @@ it('should return true if tia has kat as a neighbor', () => {
     friends.AddEdge(cas, blake);
     friends.AddEdge(cas, tia);
     friends.AddEdge(tia, blake);
-    console.log('this is the naser', Bread(tia))
+    // console.log('this is the naser', Bread(tia))
 
     
 
@@ -20,7 +20,7 @@ it('should return true if tia has kat as a neighbor', () => {
 });
 
 it('should return false if we expect blake to have kat as a neighbor', () => {
-    friends = new Graph();
+    let friends = new Graph();
     let kat = friends.AddNode('kat')
     let tia = friends.AddNode('tia')
     let cas = friends.AddNode('cas')
@@ -34,7 +34,7 @@ it('should return false if we expect blake to have kat as a neighbor', () => {
 });
 
 it('should return people in correct order', () => {
-    friends = new Graph();
+    let friends = new Graph();
     let kat = friends.AddNode('kat')
     let tia = friends.AddNode('tia')
     let cas = friends.AddNode('cas')
@@ -44,4 +44,12 @@ it('should return people in correct order', () => {
     friends.AddEdge(cas, tia);
     friends.AddEdge(tia, blake);
     expect(Bread(tia)).toBe()
+});
+
+it('should work with two nodes', () => {
+   let friends = new Graph(); 
+   let joe = friends.AddNode('joe');
+   let steve = friends.AddNode('steve');
+   friends.AddEdge(joe, steve);
+   expect(joe.GetNeighbors()).toBe(joe)
 });
