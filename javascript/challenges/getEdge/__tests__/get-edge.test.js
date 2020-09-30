@@ -41,6 +41,11 @@ it('should return a correct dollar ammount for each flight', () => {
     expect(getEdge(['SEA', 'AMS', 'MSY'], route)).toStrictEqual('True, $3300');
 });
 
+
+
+
+
+
 // [ Edge { destination: Node { value: 'PDX' }, weight: 99 },
 // Edge { destination: Node { value: 'AMS' }, weight: 2999 } ]
 // {
