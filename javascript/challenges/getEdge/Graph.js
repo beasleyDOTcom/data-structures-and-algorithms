@@ -40,10 +40,15 @@ class Graph{
     }
 
 
-     GetNodes (){
-        // TODO this should be returning whole nodes not just values
-        // let obj = {};
-        return this.vertexies.keys();
+     GetNode (value){
+    //this should take in a value and return the node associated with that value
+        for(let [key, val] of this.vertexies){
+        //this for loop looks for a vertex whose value matches the string so we can check it's neighbors
+            if(key.value === value){
+                return key;
+            }
+        }
+        return false;
     }
 
     Size(){
@@ -52,7 +57,6 @@ class Graph{
 
     GetNeighbors(node){
        let billy = this.vertexies.get(node);
-    //    console.log('this is billy', billy)
        return billy;
     }
 }
