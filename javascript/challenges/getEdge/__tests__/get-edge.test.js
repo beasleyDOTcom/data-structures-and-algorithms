@@ -38,8 +38,23 @@ it('should return a correct dollar ammount for each flight', () => {
     let route3 = route.AddEdge(ams, msy, 202);
     // console.log(route.GetNeighbors(sea))
 
-    expect(getEdge(['SEA', 'AMS', 'MSY'], route)).toStrictEqual('True, $3300');
+    expect(getEdge(['SEA', 'AMS', 'MSY'], route)).toStrictEqual('True, $3201');
 });
+it('should return False, $0 when given bad route', () => {
+    let route = new Graph();
+    let sea = route.AddNode('SEA');
+    let pdx = route.AddNode('PDX');
+    let ams = route.AddNode('AMS');
+    let dfw = route.AddNode('DFW');
+    let msy = route.AddNode('MSY');
+
+    let route1 = route.AddEdge(sea, pdx, 99);
+    let route2 = route.AddEdge(sea, ams, 2999);
+    // console.log(route.GetNeighbors(sea))
+
+    expect(getEdge(['SEA', 'PDX', 'MSY'], route)).toStrictEqual('False, $0');
+});
+
 
 
 

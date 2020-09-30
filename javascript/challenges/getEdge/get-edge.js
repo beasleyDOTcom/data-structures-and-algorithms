@@ -2,29 +2,52 @@
 function getEdge(routeArr, graph){
 
     let dollar = 0;
-    for(let i = 0; i< routeArr.length; i++){
-        // let object= vertArr.filter(node => node.value === routeArr[i] ? node : console.log( node,'nope'))
-        for(let [key, value] of graph.vertexies){
-            // console.log('this is key', key, 'this is value', value)
-            if(key.value == routeArr[i]){
-                let result = graph.GetNeighbors(key);
-                // console.log('this', result.length,' is result', result[0].weight)
-                for(let j = 0; j < result.length; j++){
-                    // console.log('THIS IS THE RESULT IN FOR LOOP', result[j])
-                    dollar += result[j].weight;
-                }
+  
+    for(let i = 0; i< routeArr.length-1; i++){        
+        //the for loop should iterate through each leg of the trip
+        let tripPossible = false;
+        let originNode = graph.GetNode(routeArr[i]);
+        let destinationNode = graph.GetNode(routeArr[i+1])
+        
+
+        //investigate the possible connections from current airport
+        let edges = graph.GetNeighbors(originNode);
+        for(let edge of edges){
+
+            if(destinationNode === edge.destination){
+                dollar += edge.weight;
+                tripPossible = true;
+                break;
             }
         }
+console.log('this is the leg', routeArr[i],'this is dollar', dollar, 'and trip possible', tripPossible)
+        if(!tripPossible){
+            return 'False, $0'
+        }
+        // let possible = false;
+        //     if(key.value == routeArr[i]){
+        //         possible=true;
+        //         let result = graph.GetNeighbors(key);
+        //         for(let j = 0; j < result.length; j++){
+        //             //this loops through the neighbors associated with the current value (i) of input array
+                    
+              
+
+        //             dollar += result[j].weight;
+        //         }
+        //     }
+    
+    }
         // let result = graph.GetNeighbors(node);
         // console.log('this is result', i, result)
-        if(dollar===0){
-            return 'False, $0'
-        } else{
-            // let vertex = graph.vertexies.get(routeArr[i]);
-            // dollar += vertex.weight;
-            // console.log('this is the new dollar', dollar)
-        }
-    }
+        // if(dollar===0){
+           
+        // } else{
+        //     // let vertex = graph.vertexies.get(routeArr[i]);
+        //     // dollar += vertex.weight;
+        //     // console.log('this is the new dollar', dollar)
+        // }
+    
     return `True, $${dollar}`;
 }
 
