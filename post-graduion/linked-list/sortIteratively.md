@@ -10,3 +10,7 @@ given a linked list, sort the values iteratively
  - define an empty array
 #### iterate through the list starting with the first node = while next does not equal null
  - find the correct place for node.value
+
+ # visualization
+ [1] --> [3] --> [2] --> null
+ 
