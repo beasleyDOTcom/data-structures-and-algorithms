@@ -15,8 +15,12 @@
 ## Algorithm
 - create function that takes in a linked list as an argument - returning a sorted version of that linked list
 - null check
+- define arr binarySearchArray
 - define int index
-- 
+- define function _pusher(node)
+- - null check on node
+- - binarySearchArray.push(node.value)
+- define function _sort(list)
 ## Pseudo Code
 ## Code
 ## Testing
