@@ -1,0 +1,12 @@
+function sumAll(arr) {
+  let lowest = arr[0] < arr[1] ? arr[0] : arr[1];
+  let highest = arr[0] > arr[1] ? arr[0] : arr[1];
+  console.log(lowest, highest)
+  let sum = 0;
+  for(lowest; lowest <= highest; lowest++){
+    sum = sum + lowest;
+  }
+  return sum;
+}
+
+sumAll([1, 4]);
