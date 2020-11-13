@@ -1,0 +1,33 @@
+function whatIsInAName(collection, source) {
+  var arr = [];
+  // Only change code below this line
+  // does 
+  let keys = Object.keys(source)
+  console.log('these are the keys involved', keys)
+  let newArr = collection.slice(); //copy of array
+// evaluate whether each object contains the necessary key/value pairs that qualify entry into arr
+  arr = newArr.reduce((acc, item, index, array) => {
+    let allPresent = true;
+    keys.forEach(key => { 
+      if(item[key] !== source[key]){
+        allPresent = false;
+      }
+    })
+      if(allPresent){
+        acc.push(item)
+      } 
+    return acc;
+  }, [])
+  // Only change code above this line
+  return arr;
+}
+//should return [{ first: "Tybalt", last: "Capulet" }].
+console.log(whatIsInAName(
+[ { "apple": 1, "bat": 2 }, 
+  { "bat": 2 }, 
+  { "apple": 1, "bat": 2, "cookie": 2 }], 
+  
+  { "apple": 1, "bat": 2 }));
+
+//[{ "apple": 1, "bat": 2 },
+// { "apple": 1, "bat": 2, "cookie": 2 }].
