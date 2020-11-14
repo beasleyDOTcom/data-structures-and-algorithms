@@ -1,0 +1,17 @@
+function fearNotLetter(str) {
+  let alph = 'abcdefghijklmnopqrstuvwxyz';
+  let i = 0;
+  while(str[0]!==alph[i]){
+    i++;
+    if(i>26){return undefined}
+  }
+  for(let j = 0; j < str.length; j++){
+    if(str[j] !== alph[i]){
+      return alph[i]
+    }
+    i++
+  }
+  return undefined;
+}
+
+console.log(fearNotLetter("stvwx"));

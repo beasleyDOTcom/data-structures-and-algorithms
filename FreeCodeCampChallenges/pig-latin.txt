@@ -1,0 +1,28 @@
+function translatePigLatin(str) {
+//algorithm:
+//if string starts with vowel append "way" to the end of the string
+let isVowel = /[aeiou]/;
+if(isVowel.test(str[0])){
+  return str+'way';
+} else {
+  let strArr = str.split('');
+  let i = 0;
+  let piglat = '';
+  while(!isVowel.test(strArr[i])){
+    piglat += strArr[i];
+    i++;
+  }
+  let frontOfWord=[];
+  while(i<str.length){
+    frontOfWord.push(str[i])
+    i++;
+  }
+  return frontOfWord.join('') + piglat + 'ay'
+}
+//else add every letter before you reach the first vowel to a variable named piglat
+//append "ay" to piglat, 
+//append piglat to string and return
+  return str;
+}
+
+console.log(translatePigLatin("consonant"));
