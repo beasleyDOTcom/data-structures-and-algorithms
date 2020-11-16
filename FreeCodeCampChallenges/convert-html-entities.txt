@@ -1,0 +1,23 @@
+function convertHTML(str) {
+  let newString='';
+  for(let i = 0; i < str.length; i++){
+    if(str.charAt(i) === '&'){
+      newString += '&amp;';
+    } else if(str.charAt(i) === '<'){
+      newString += '&lt;';
+    } else if( str.charAt(i) === '>'){
+      newString += '&gt;';
+    } else if( str.charAt(i) === '"'){
+      newString += '&quot;';
+    } else if(str.charAt(i) === "'"){
+      newString += '&apos;'
+    }
+    else newString += (str.charAt(i))
+
+  }
+
+  
+  return newString;
+}
+
+console.log(convertHTML("Dolce & Gabbana"));

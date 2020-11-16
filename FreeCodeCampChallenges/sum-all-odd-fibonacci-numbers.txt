@@ -1,0 +1,20 @@
+function sumFibs(num) {
+  // algorithm:
+  // create an array of fibonacci numbers less or equal to num
+  if(num === 1){return 1};
+  const fibs = [1,1];  
+  while(fibs[fibs.length-2]+fibs[fibs.length-1] <= num){
+    fibs.push(fibs[fibs.length-2]+fibs[fibs.length-1])
+  }
+  console.log(fibs)
+  let odds = 0;
+  for(let i = 0; i < fibs.length; i++){
+    if(fibs[i] %2 ===1){
+      odds+=fibs[i]
+    }
+    console.log(odds)
+  }
+  return odds;
+}
+
+console.log(sumFibs(1000));

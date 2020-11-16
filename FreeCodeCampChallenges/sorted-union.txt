@@ -1,0 +1,18 @@
+function uniteUnique(arr) {
+  // algorithm:
+  // evaluate each array in sequence beginning with the first argument in the argument object
+  // iterate through each item in each array
+  // if item is not present in resultArr push item to resultArr
+  const resultsArr=[];
+  for(let i = 0; i < arguments.length; i++){
+    arguments[i].forEach(item => {
+      if(!resultsArr.includes(item)){
+        resultsArr.push(item)
+      }
+    })
+  }
+
+  return resultsArr;
+}
+
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
