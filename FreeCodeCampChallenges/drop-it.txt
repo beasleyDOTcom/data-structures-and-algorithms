@@ -1,0 +1,22 @@
+function dropElements(arr, func) {
+  while(arr.length > 0){
+    if(func(arr[0])){
+      return arr;
+    } else {
+      arr.splice(0, 1)
+    }
+  }
+  return arr;
+}
+
+console.log(dropElements([1, 2, 3], function(n) {return n < 3; }));
+// problem domain:
+// write a function which takes in an arr and function
+// starting at index 0, remove each element from array until function returns true with element passed as an argument. 
+
+// algorithm:
+// pure function or modify given arr? modify.
+// iterate through array
+// if callback(arr[i]) is truthy return arr
+// else arr.slice(i, 1)
+// once iterated through entire arr, return arr;
