@@ -1,0 +1,44 @@
+function sumPrimes(num) {
+  if(num===2){
+    return 2;
+  } else if(num===3){
+    return 5
+  }
+  const arr = [2, 3];
+  let regex = /\d+[02468]$/
+  for(let i = 4; i <= num; i++){
+    if(!regex.test(i)){
+      let nums = 0;
+      for(let j = 0; j<i.toString().length; j++){
+        nums+=parseInt(i.toString()[j])
+      }
+        if(nums % 3 !== 0){
+          let divByPrime = true;
+          for(let k = 0; k<Math.sqrt(i); k++){
+            if(i % arr[k] == 0){
+              divByPrime = false;
+            }
+          }
+          if(divByPrime){
+            arr.push(i)
+          } 
+        }
+      }
+
+  }
+  let sum = 0;
+  for(let q = 0; q < arr.length; q++){
+    sum += arr[q];
+  }
+  console.log(arr)
+  return sum;
+}
+
+sumPrimes(5);
+//problem domain:
+// Rewrite sumPrimes so it returns the sum of all prime numbers that are less than or equal to num.
+//I/O: 4 -> [2, 3] --> 5
+// alrogithm:
+// collect all prime numbers that are less than or equal to num
+// return their sum
+

@@ -1,0 +1,37 @@
+function smallestCommons(arr) {
+
+  let newArr = [];
+  if(arr[0] < arr[1]){
+    newArr.push(arr[0])
+    newArr.push(arr[1])  
+  } else if (arr[1] < arr[0]){
+    newArr.push(arr[1])
+    newArr.push(arr[0])
+  }
+  const numsBetween = [];
+
+  for(let j = newArr[0]; j < newArr[1]; j++){
+    numsBetween.push(j)
+  }
+  let divisibleByAll = [];
+  for(let i = 1; divisibleByAll.length < 99999999999999; i++){
+    let lowest = i*arr[1];
+    if(lowest % arr[0]===0){
+      numsBetween.forEach(number => {
+        if(lowest % number ===0){
+          divisibleByAll.push(lowest)
+        }
+      })
+      if(numsBetween.length === divisibleByAll.length){
+        return lowest;
+      } else {
+        divisibleByAll = [];
+      }
+    }
+  }
+}
+console.log(smallestCommons([10,2]));
+//problem domain:
+// get list of numbers between 1 and 5
+// iterate through each number to find out if 5 is divisible by all between numbers.
+// if not, multiple 5 by 2 , 3, 4, 5, etc.
