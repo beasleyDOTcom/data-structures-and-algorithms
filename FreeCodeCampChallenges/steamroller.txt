@@ -1,0 +1,32 @@
+function steamrollArray(arr) {
+  const newArr = [];
+  
+  function _helper(item){
+    
+    if(item===undefined){return}// null check
+
+    if(typeof(item)=== 'object' && item.length ===undefined){
+      // this is {}
+      newArr.push(item)
+    } else if (typeof(item) === 'object'){
+      // this is []
+        item.forEach(thing => { _helper(thing)})
+    } else {
+      newArr.push(item);
+    }
+  }
+  
+  _helper(arr)
+  return newArr;
+}
+
+console.log(steamrollArray([1, {}, [3, [[4]]]]));
+
+// problem domain:
+// flatten array
+// algorithm
+// perhaps a good opportunity for recursion
+// if helper function's argument is:
+// object -> push object to new Arr
+// array -> map over array calling _helper recursively with each item as an argument.
+// anything else gets pushed to newArr
