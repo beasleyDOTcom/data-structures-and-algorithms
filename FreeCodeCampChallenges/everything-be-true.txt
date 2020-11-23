@@ -1,0 +1,12 @@
+function truthCheck(collection, pre) {
+  let present = true;
+  collection.map(item => {
+    console.log(item[pre])
+    if(!item[pre]){
+      present = false;
+    }
+  })
+  return present;
+}
+
+truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
