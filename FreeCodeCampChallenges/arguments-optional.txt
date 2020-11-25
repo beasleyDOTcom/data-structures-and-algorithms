@@ -1,0 +1,17 @@
+function addTogether(first, second){
+
+  function isNumber(num){
+    return typeof(num) === 'number' ? true : false;
+  }
+  if(!isNumber(first)){return undefined} //check first argument
+  function sum(second){
+    return isNumber(second) ? first + second : undefined;
+  }
+ 
+  if(arguments.length > 1){
+    return sum(second)
+  }
+  return second => sum(second)
+}
+
+console.log(addTogether(2,44))
