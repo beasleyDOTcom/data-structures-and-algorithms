@@ -1,0 +1,33 @@
+var Person = function(firstAndLast) {
+  // Only change code below this line
+  // Complete the method below and implement the others similarly
+  this.getFullName = function() {
+    return firstAndLast;
+  };
+  this.getFirstName = function(){ 
+    return firstAndLast.split(' ')[0];
+  }
+  this.getLastName = function (){
+    return firstAndLast.split(' ')[1];
+  }
+
+  this.setFirstName = function(name){
+    return firstAndLast = firstAndLast.replace(/\w+\s/, `${name} `)
+  }
+
+  this.setLastName = function (name){
+    return firstAndLast = firstAndLast.replace(/\s\w+/, ' '+name)
+  }
+
+  this.setFullName = function (name){
+    return firstAndLast = name;
+  }
+
+
+  return firstAndLast;
+};
+
+var bob = new Person('Bob Ross');
+bob.getFullName();
+
+
