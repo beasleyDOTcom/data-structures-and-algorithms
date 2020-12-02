@@ -1,0 +1,23 @@
+function palindrome(str) {
+  let string = str.toLowerCase().replace(/[\W_]/g, '')
+  let j = 0
+  console.log(string)
+  for(let i = string.length -1; i >= j; i--){
+    console.log(string[j], ' and ', string[i])
+    if(string[j]!==string[i]){
+      return false;
+    }  
+    j++;
+  }
+  return true;
+}
+
+
+
+console.log(palindrome("0_0 (: /-\ :) 0-0"));
+/* problem domain: 
+return true if a palindrome 
+palindrome("never odd or even")
+
+
+*/
