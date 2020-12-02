@@ -1,0 +1,92 @@
+function convertToRoman(num) {
+    function thousands(number){
+        if(number ===0){return''}
+        switch(number){
+            case 1000: return 'M';
+            case 2000: return 'MM';
+            case 3000: return 'MMM';
+            default: return;
+        }
+    }
+    function hundreds(number){
+        if(number ===0){return''}
+        switch(number){
+            case 100: return 'C';
+            case 200: return 'CC';
+            case 300: return 'CCC';
+            case 400: return 'CD';
+            case 500: return 'D';
+            case 600: return 'DC';
+            case 700: return 'DCC';
+            case 800: return 'DCCC';
+            case 900: return 'CM';
+            default: '';
+        }
+    }
+    function tens(number){
+        if(number ===0){return''}
+        switch(number){
+            case 10: return 'X';
+            case 20: return 'XX';
+            case 30: return 'XXX';
+            case 40: return 'XL';
+            case 50: return 'L';
+            case 60: return 'LX';
+            case 70: return 'LXX';
+            case 80: return 'LXXX';
+            case 90: return 'XC';
+            default: return;
+        }
+    }
+    function single(number){
+        if(number ===0){return''}
+        switch(number){
+            case 1:
+                return 'I';
+            case 2:
+                return 'II';
+            case 3:
+                return 'III';
+            case 4:
+                return 'IV';
+            case 5:
+                return 'V';
+            case 6:
+                return 'VI';
+            case 7:
+                return 'VII';
+            case 8:
+                return 'VIII';
+            case 9:
+                return 'IX';
+            default:
+            return ;
+        }
+    }
+    let numArray = num.toString().split('');
+    let roman = '';
+    if(numArray.length ===1){
+        return single(parseInt(numArray[0]))
+    } else if (numArray.length === 2){
+        return tens(parseInt(numArray[0])*10)+single(parseInt(numArray[1]))
+    } else if(numArray.length ===3){
+        return hundreds(parseInt(numArray[0])*100)+tens(parseInt(numArray[1])*10)+single(parseInt(numArray[2])) 
+    } else if(numArray.length === 4){
+        return thousands(parseInt(numArray[0])*1000)+hundreds(parseInt(numArray[1])*100)+tens(parseInt(numArray[2])*10)+single(parseInt(numArray[3]))
+    }
+ return roman;
+}
+
+console.log(convertToRoman(30));
+
+
+/* 
+problem domain:
+define a function that accepts a number and returns the corresponding number in the form of a Roman Numeral
+
+algorithm:
+evaluate each number using the length of string and moving one by one calling a helper function:
+
+
+
+*/
