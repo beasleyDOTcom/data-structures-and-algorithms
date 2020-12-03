@@ -1,0 +1,41 @@
+function telephoneCheck(str) {
+let regex = /^(\+1|1)?\s?([(]\d\d\d[)]|\d\d\d)(\s|-)?\d\d\d[-\s]?\d\d\d\d$/;
+return regex.test(str)
+}
+//   let regex = /[a-zA-Z?]/;
+//   let number = /\d/;
+//   if(regex.test(str)){ return false;}
+//   let fourCount = 0;
+//   let threeCount = 0;
+//   let place = str.length-1;
+//   let stillGood = true;
+
+//   for(let i = str.length-1; i >=0; i--){
+//     if(fourCount < 4){
+//       if(number.test(str[i])){
+//         fourCount ++;
+//         console.log('first four:', str[i])
+//       } else { return false }
+//     } else if(threeCount < 3){
+//       if(number.test(str[i])){
+//         threeCount++;
+//       } else if(number.test(str[i])){
+// console.log('ooops');
+// break;
+//       }
+//       console.log('first three:', str[i])
+//     }
+//    // console.log(str[i])
+//   }
+  
+//   return true;
+// }
+
+console.log(telephoneCheck("1(757)622-7322"));
+/*
+problem domain:
+validate a phone number returning false if it doesn't match one of the sequences.
+algorithm:
+validate using regex 
+
+*/
