@@ -1,15 +1,16 @@
 function checkCashRegister(price, cash, cid) {
-    let difference = cash - price;  
+    let difference = cash - price; 
+    difference = parseFloat(difference.toFixed(2)) 
     let change = [];
     
      function divide(targetDollarTotal, coinTotal, denominator){
        let denominatorName = denominator;
           switch(denominator){
-            case "PENNY": denominator = .01;
+            case "PENNY": denominator = 0.01;
             break;
-            case "NICKEL": denominator = .05;
+            case "NICKEL": denominator = 0.05;
             break;
-            case "DIME": denominator = .1;
+            case "DIME": denominator = 0.1;
             break;
             case "QUARTER": denominator = .25;
             break;
@@ -27,7 +28,9 @@ function checkCashRegister(price, cash, cid) {
        let numberOfCoinsUsed = 0;
        let remainderOfTotal = targetDollarTotal; 
        let ammountSpent = 0;
-       while(coinTotal > 0 && remainderOfTotal/denominator > 0){
+       console.log(remainderOfTotal - denominator)
+       while(coinTotal > 0 && remainderOfTotal-denominator >= 0){
+         console.log('made it', remainderOfTotal-denominator)
          numberOfCoinsUsed++;
          remainderOfTotal -=denominator;
          coinTotal -= denominator;
@@ -47,7 +50,7 @@ function checkCashRegister(price, cash, cid) {
     
     return change;
   }
-  console.log(checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 1.25], ["ONE", 90], ["FIVE", 55], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
+  console.log(checkCashRegister(19.70, 20, [["PENNY", 0.01], ["NICKEL", 1], ["DIME", 0], ["QUARTER", 1], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
   
   
   /*
