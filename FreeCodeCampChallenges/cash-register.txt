@@ -1,0 +1,90 @@
+function checkCashRegister(price, cash, cid) { 
+  let change = [];
+  let isEmpty = 0;
+   function round(dollar){
+     return parseFloat(dollar.toFixed(2))
+   }
+
+   function divide(targetDollarTotal, coinTotal, denominator){
+     let denominatorName = denominator;
+        switch(denominator){
+          case "PENNY": denominator = 0.01;
+          break;
+          case "NICKEL": denominator = 0.05;
+          break;
+          case "DIME": denominator = 0.1;
+          break;
+          case "QUARTER": denominator = .25;
+          break;
+          case "ONE": denominator = 1;
+          break;
+          case "FIVE": denominator = 5;
+          break;
+          case "TEN": denominator = 10;
+          break;
+          case "TWENTY": denominator = 20;
+          break;
+          case "ONE HUNDRED": denominator = 100;
+          break;
+        }
+     let numberOfCoinsUsed = 0;
+     let remainderOfTotal = targetDollarTotal; 
+     let ammountSpent = 0;
+     while(coinTotal > 0 && remainderOfTotal-denominator >= 0){
+       numberOfCoinsUsed++;
+       remainderOfTotal = round(remainderOfTotal - denominator);
+       coinTotal = round(coinTotal - denominator);
+       ammountSpent = round(ammountSpent + denominator);
+
+     }
+     if(coinTotal === 0){
+       isEmpty ++;
+     }
+    return {numberOfCoinsUsed, ammountSpent, remainderOfTotal:round(remainderOfTotal), coinTotal:round(coinTotal), denominatorName}
+   }
+  let difference = round(cash - price);
+  let registerEmpty = false;
+  for(let i = cid.length -1; i >= 0; i--){
+    if(cid[i][1] !== 0){
+       let obj = divide(difference, cid[i][1], cid[i][0])
+       difference = obj.remainderOfTotal;
+       if(obj.numberOfCoinsUsed > 0){
+         change.push([obj.denominatorName, obj.ammountSpent])
+       } 
+    } else {
+      isEmpty ++;
+    }
+  } // end of for loop
+
+  console.log(difference, isEmpty)
+  if(difference > 0){
+    return {status: 'INSUFFICIENT_FUNDS', change: []}
+  } 
+  else if(difference === 0 && isEmpty === 9){
+    return {status: "CLOSED", change: cid}
+  } else return {status: 'OPEN', change};
+}
+console.log(checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]));
+
+
+/*
+**Problem Domain:
+given:
+price of item
+cash given
+cash available
+return an array with change given sorted like this:
+{change: [["TWENTY", 60], ["TEN", 20], ["FIVE", 15], ["ONE", 1], ["QUARTER", 0.5], ["DIME", 0.2], ["PENNY", 0.04]]}
+
+subtract price of item from cash given
+{if remainder is negative return 'feed me cash seymor FEED ME'}
+{if remainder is 0 return  open and cash in drawer}
+else provide change: starting with highest to lowest 
+}
+
+provide change:
+let difference = cash - price;
+if(currentCoin < difference){
+  difference = difference - currentCoin;
+}
+*/
