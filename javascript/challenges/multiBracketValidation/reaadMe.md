@@ -35,3 +35,10 @@ So I tried doing it a different way, but I got kind of lost in the weeds and cou
 I wonder if regex is the way to go for this
 while regex.test() is truthy, string.replace(regex)
 if string.length === 0 return true else return false;
+
+# Hindsight
+This is a pretty long regex that is hard to look at so I'm going to break it down: const regex = /\{[\w!@#$%^&*:";'<>,.?\/-_=+|\~]*\}|\[[\w!@#$%^&*:";'<>,.?\/-_=+|\~]*\]|\([\w!@#$%^&*:";'<>,.?\/-_=+|\~]*\)/;
+
+there are three groups of regex expressions seperated by or '|' operands. 
+each one has a right facing bracket, a bunch of allowable (everything but brackets) characters and then a left facing bracket. 
+{d9**^%%} for example, would be captured and then replaced.  
