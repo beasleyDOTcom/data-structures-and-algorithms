@@ -1,6 +1,19 @@
 'use strict'
+function validateBracketTown(initialString){
+  let str = initialString.toString();
+  const regex = /\{[\w!@#$%^&*:";'<>,.?\/-_=+|\~]*\}|\[[\w!@#$%^&*:";'<>,.?\/-_=+|\~]*\]|\([\w!@#$%^&*:";'<>,.?\/-_=+|\~]*\)/;
+  while(regex.test(str)){
+    str = str.replace(regex, '');
+  }
+  if(str.length===0){
+    return true;
+  } else {
+    return false;
+  }
+}
+module.exports = validateBracketTown;
 
-
+/*
 function bracketTown(string){
     const array = [];
     let length = string.length;
@@ -45,5 +58,4 @@ function bracketTown(string){
         }
 return true
 }
-
-module.exports = bracketTown;
+*/

@@ -30,3 +30,8 @@ Input	Output	Why
 # plan
 When we planned out our solution and developed our whiteboard we didn't realize the implications of the last input output. 
 So I tried doing it a different way, but I got kind of lost in the weeds and couldn't find my way out.
+
+
+I wonder if regex is the way to go for this
+while regex.test() is truthy, string.replace(regex)
+if string.length === 0 return true else return false;
