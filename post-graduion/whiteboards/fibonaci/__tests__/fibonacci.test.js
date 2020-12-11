@@ -1,4 +1,4 @@
-const addUp = require('./fibonacci.js');
+const addUp = require('../fibonacci.js');
 
 it('should return a number', () => {
     expect(typeof(addUp(3))).toBe('number');
