@@ -27,7 +27,7 @@ testList.insert(1);
 it('should reverse linked list', () => {
     console.log(linkedList);
     console.log(testList);
-    expect(reverseLinkedList(linkedList)).toBe(testList);
+    expect(reverseLinkedList(linkedList)).toStrictEqual(testList);
 });
 it('should return list with head of null if given an empty list', () => {
     const badList = new LinkedList();
