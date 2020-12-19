@@ -1,20 +1,20 @@
 function getMax(Stack){
-    if(!Stack.isEmpty()){
+    if(Stack.isEmpty()){
         return null;
-    } else {
-        let max = Stack.pop();
     }
+    let max = Stack.pop();
+    
     function _helper(Stack){
-        if(!Stack.isEmpty()){
-            return;
+        if(Stack.isEmpty()){
+            return 
         }
-        let temp = stack.pop();
+        let temp = Stack.pop();
         if(max < temp){
             max = temp;
         }
         _helper(Stack)
     }
-
+    _helper(Stack);
     return max;
 }
 
