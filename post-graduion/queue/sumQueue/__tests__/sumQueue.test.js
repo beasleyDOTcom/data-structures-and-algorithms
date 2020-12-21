@@ -20,4 +20,17 @@ describe('Given a Queue, return the sum of all values', () => {
         line.enqueue(2);
         expect(sumQueue(line)).toBe(5);
     });
+    it('should work with positive and negative numbers', () => {
+        const line = new Queue();
+        line.enqueue(-100);
+        line.enqueue(20);
+        line.enqueue(2);
+        line.enqueue(-2);
+        line.enqueue(-10);
+        line.enqueue(-10);
+        const firstIn = line.dequeue();
+        expect(firstIn).toBe(-100);
+        expect(sumQueue(line)).toBe(0);
+
+    });
 });

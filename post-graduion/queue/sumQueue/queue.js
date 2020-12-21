@@ -1,11 +1,24 @@
+class Node{
+    constructor(value, next=null){
+        this.value = value;
+        this.next = next;
+    }
+}
+
 class Queue{
     constructor(){
         this.rear = null;
         this.front = null;
     }
     enqueue(val){
-        this.rear.next = new Node(val);
-        this.rear = this.rear.next;
+        if(this.isEmpty()){
+            this.front = new Node(val);
+            this.rear = this.front;
+            return;
+        }
+        let temp = new Node(val);
+        this.rear.next = temp;
+        this.rear = temp;
     }
     dequeue(){
         let temp = this.front;
@@ -21,10 +34,5 @@ class Queue{
         }
     }
 }
-class Node{
-    constructor(value, next=null){
-        this.value = value;
-        this.next = next;
-    }
-}
+
 module.exports = Queue;
