@@ -21,6 +21,9 @@ class Queue{
         this.rear = temp;
     }
     dequeue(){
+        if(this.isEmpty()){
+            return;
+        }
         let temp = this.front;
         this.front = this.front.next;
         return temp.value;
