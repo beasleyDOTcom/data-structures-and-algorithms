@@ -15,7 +15,9 @@ class BinaryTree{
             this.root= new Node(value);
         } else {
             let currentNode = this.root;
-            while(currentNode.)
+            while(currentNode !== null){
+                currentNode
+            }
         }
     }
 }
