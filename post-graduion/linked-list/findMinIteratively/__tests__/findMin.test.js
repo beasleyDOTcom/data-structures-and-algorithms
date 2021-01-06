@@ -33,7 +33,7 @@ describe('Return minimum value from linked list', () => {
     });
     it('should return null if given a list with a null head', () => {
         const list = new LinkedList();
-        expect(findMIn(list)).toBeNull();
+        expect(findMin(list)).toBeNull();
     });
     it('should return 4 if given a list with one number', () => {
         const list = new LinkedList();
