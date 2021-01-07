@@ -23,3 +23,12 @@ function isPresent(linkedList, target){
     }
     return false;
 }
+
+# testing:
+target: b ->> true
+target 4 ->> false
+target node{ value a next b} false ??
+
+# Big O:
+- time: O(n)
+- space: O(1)
