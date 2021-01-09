@@ -26,6 +26,8 @@ const Calculator = function() {
       }
     }
     
-    return array.join()  
+    return parseFloat(array.join())  
     }
   };
+
+  module.exports = Calculator;
