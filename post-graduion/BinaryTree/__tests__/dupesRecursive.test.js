@@ -30,4 +30,10 @@ describe('testing getDupes ability to return the duplicates from a Binary Tree',
         const empty = new BinaryTree();
         expect(getDupes(empty)).toStrictEqual([]);
     });
+    it('should find all duplicates', () => {
+        bt.add('POPO')
+        bt.add('she show');
+        bt.add(7);
+        expect(getDupes(bt)).toHaveLength(7);
+    });
 });
