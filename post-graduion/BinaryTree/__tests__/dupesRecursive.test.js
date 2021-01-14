@@ -34,6 +34,9 @@ describe('testing getDupes ability to return the duplicates from a Binary Tree',
         bt.add('POPO')
         bt.add('she show');
         bt.add(7);
+        console.log(getDupes(bt))
         expect(getDupes(bt)).toHaveLength(7);
     });
+
+
 });
