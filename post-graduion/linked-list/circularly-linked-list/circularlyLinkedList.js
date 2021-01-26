@@ -40,6 +40,7 @@ class LinkedList {
        
         while(this.tail !== a){
             if(b.value === player){
+                a.next = b.next;
                 return `Removed ${player} from List`;
             } else {
                 b = b.next;
