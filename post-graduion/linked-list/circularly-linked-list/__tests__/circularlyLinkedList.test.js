@@ -37,7 +37,9 @@ describe('This suite tests the functionality of the removePlayer() method of Cir
     it('should return "Removed {player} from List" when name is present in list.', () => {
         names.addPlayer('Allie');
         names.addPlayer('Collin');
-        expect(names.removePlayer('Stephen')).toStrictEqual('Removed Stephen from List')
+        expect(names.removePlayer('Stephen')).toStrictEqual('Removed Stephen from List');
+        expect(names.head.next.next.next.value).toStrictEqual('Megan')
+        expect(names.removePlayer('Stephen')).toStrictEqual('Player Not Found');
     });
     it('should remove person when one person is in list', () => {
         const one = new CircularList();
@@ -58,5 +60,13 @@ describe('This suite tests the functionality of the removePlayer() method of Cir
         two.addPlayer('Paul');
         expect(two.removePlayer('David')).toStrictEqual('Removed David from List');
         expect(two.head.value).toStrictEqual('Paul');
+    });
+    it('should remove name given list with three or more', () => {
+        const three = new CircularList();
+        three.addPlayer('Megan');
+        three.addPlayer('Tia');
+        three.addPlayer('David');
+        expect(three.removePlayer('Megan')).toStrictEqual('Removed Megan from List');
+        expect(three.head.next.next.value).toStrictEqual('David')
     });
 });
