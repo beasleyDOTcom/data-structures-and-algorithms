@@ -18,7 +18,16 @@ describe('.add()', () => {
 });
 
 describe('.shuffle() method', () => {
-
+    function hasSameElements(a, b){
+        let seen = new Set();
+        a.forEach(element => seen.add(element))
+        for(let i = 0; i< a.length; i++){
+            if(!seen.has(b[i])){
+                return false;
+            }
+        }
+        return true;
+    }
     function same(a, b){
         for(let i = 0; i < a.length; i++){
             if(a[i] !== b[i]){
@@ -30,25 +39,42 @@ describe('.shuffle() method', () => {
     const arr = [1, 4, 3, 2];
     
     it('should not return same array', () => {
-        expect(same([...deck.cards], deck.shuffle())).toBeFalse();
+        let original = [...deck.cards];
+        deck.shuffle();
+        expect(same(original, deck.cards)).toBeFalsy();
     });
-    it('should ', () => {
-        expect(...deck.cards).not.toStrictEqual(deck.shuffle())
+    it('should return array of same length', () => {
+        let original = [...deck.cards];
+        deck.shuffle();
+        expect(original).not.toStrictEqual(deck.cards);
+    });
+    it('should still have all the original elements in new array', () => {
+        let original = [...deck.cards];
+        deck.shuffle();
+        expect(hasSameElements(original, deck.cards)).toBeTruthy();
+    });
+    it('should return false without same elements', () => {
+        let original = [...deck.cards];
+        deck.shuffle();
+        deck.remove(1);
+        deck.add('THIS SHOULD NOT EXIST HERE');
+        expect(hasSameElements(original, deck.cards)).toBeFalsy();
+        expect(hasSameElements(deck.cards, original)).toBeFalsy();
     });
 });
 
 describe('.remove() method', () => {
     const testDeck = new Deck();
-    deck.add('check into cash');
-    deck.add('olympics');
-    deck.add('emergen-c')
-    deck.add('pay pal')
+    testDeck.add('check into cash');
+    testDeck.add('olympics');
+    testDeck.add('emergen-c')
+    testDeck.add('pay pal')
     it('should reduce length by 1', () => {
-        expect(deck.remove(2)).toStrictEqual('emergen-c');
-        expect(deck.cards).toHaveLength(3);
+        expect(testDeck.remove(2)).toStrictEqual('emergen-c');
+        expect(testDeck.cards).toHaveLength(3);
     });
     it('should remove an item and preserve relative of other elemenths', () => {
-        expect(deck.cards[2]).toStrictEqual('pay pal');
-        expect(deck.cards[1]).toStrictEqual('olympics');
+        expect(testDeck.cards[2]).toStrictEqual('pay pal');
+        expect(testDeck.cards[1]).toStrictEqual('olympics');
     });
 });
