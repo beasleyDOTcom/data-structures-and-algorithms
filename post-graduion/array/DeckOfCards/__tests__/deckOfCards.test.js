@@ -77,4 +77,10 @@ describe('.remove() method', () => {
         expect(testDeck.cards[2]).toStrictEqual('pay pal');
         expect(testDeck.cards[1]).toStrictEqual('olympics');
     });
+    it('should remove all elements from testDeck.cards', () => {
+        testDeck.remove(0);
+        testDeck.remove(0);
+        testDeck.remove(0);
+    expect(testDeck.cards).toHaveLength(0);        
+    });
 });
