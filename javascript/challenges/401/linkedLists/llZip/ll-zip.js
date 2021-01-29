@@ -3,8 +3,8 @@ function zipLists(list1, list2){
     
 let current1 = list1.head;
 let current2 = list2.head;
-let pointer1 = current1.next;
-let pointer2 = current2.next;
+let pointer1;
+let pointer2;
 
 while(current1 && current2){
 
@@ -13,8 +13,11 @@ while(current1 && current2){
 
     current1.next = current2;
     current2.next = pointer1 || current2.next;
-    // pointer1
-    // pointer1.next = pointer2
+
+  // a  -- c  --> e --> null
+  // |  /
+  // b     d -->  f--> null
+  //       ^
     current1 = pointer1;
     current2 = pointer2;
 //pointer2 is value 4 {value: 4, next: { value: 6 , next: null}}
