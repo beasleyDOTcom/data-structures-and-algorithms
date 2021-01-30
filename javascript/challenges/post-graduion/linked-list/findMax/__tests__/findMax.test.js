@@ -7,7 +7,7 @@ class LinkedList {
         this.head;
     }
     add(val){
-        this.head = new Node(value, this.head);
+        this.head = new Node(val, this.head);
     }
 }
 class Node{
