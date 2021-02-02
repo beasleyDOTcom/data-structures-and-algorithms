@@ -2,5 +2,5 @@
 
 # algorithm
 iterate through array evaluating each element
- - if element is a zero arr.push(arr.slice(arr[i]))
- 
+ - if element is a zero push it to end of array
+ - return array
