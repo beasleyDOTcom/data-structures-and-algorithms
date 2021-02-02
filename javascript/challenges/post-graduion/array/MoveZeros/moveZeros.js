@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = arr => {
+    console.log(arr)
     let zeros = 0;
     let result = [];
     arr.forEach(element =>{

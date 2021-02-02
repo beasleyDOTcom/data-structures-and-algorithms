@@ -4,7 +4,8 @@ const pushZeros = require('../moveZeros.js');
 
 describe('write a funtion that given an array, moves all zeros to end of array', () => {
     it('should return [1,0] if given [0,1]', () => {
-    expect(pushZeros[0,1]).toStrictEqual([1,0]);        
+        let start = [0,1]
+    expect(pushZeros(start)).toStrictEqual([1,0]);        
     });
     it('should handle more complex value types', () => {
         class Node{
