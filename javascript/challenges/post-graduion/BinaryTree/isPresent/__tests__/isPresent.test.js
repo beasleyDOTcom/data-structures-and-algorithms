@@ -1,5 +1,5 @@
 'use strict';
-const BinaryTree = 'ha'/// require something
+const BinaryTree = require('../../BinaryTree.js');
 const isPresent = require('../isPresent.js');
 const tree = new BinaryTree();
 
@@ -14,6 +14,6 @@ describe('test whether isPresent(value, tree) detects the presence of a value in
         expect(isPresent('false', tree)).toBeTruthy();
     });
     it('should return false if value requested is not present in tree', () => {
-        expect(isPresent('WORLD', tree)).toBeFalse();
+        expect(isPresent('WORLD', tree)).toBeFalsy();
     });
 });
