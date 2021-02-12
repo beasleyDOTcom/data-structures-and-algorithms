@@ -1,10 +1,21 @@
 //const checkIllumination = require('../shineALight.js');
 const checkIllumination = require('../take2.js');
 const {lamps, query, result} = require('../insertComman.js');
+async function bigNumbers(length){
+    let result = [];
+    for(let i = 0; i < length; i++){
+        let subArray = [];
+        subArray.push(Math.floor(Math.random()*100000));
+        subArray.push(Math.floor(Math.random()*100000));
+        result.push(subArray);
+    }
+    return result;
+}
+
 
 describe('the challenge here is to determine whether a light still shines on a tile after you turn off the lights in adjacent tiles', () => {
  
-    it.only('should return LIGHT if light touches it and DARK of no light remains', () => {
+    it('should return LIGHT if light touches it and DARK of no light remains', () => {
         const lamps = [ [ 4, 3 ], [ 4, 4 ] ] 
         const query =[ [ 3, 4 ], [ 7, 6 ] ];
         expect(checkIllumination(8,lamps, query)).toStrictEqual(['DARK', 'LIGHT',]);
@@ -33,9 +44,11 @@ describe('the challenge here is to determine whether a light still shines on a t
         expect(checkIllumination(100000, [[1,1],[100000,100000]], [[1,1]])).toStrictEqual(['LIGHT'])
     });
 
-    it('should pass test no. 2', () => {
-        expect(checkIllumination(1000, lamps, query)).toHaveLength(query.length)
+    it.only('should pass test no. 2', async () => {
+        let lamps = await bigNumbers(100000);
+        let query = await bigNumbers(100000);
+       // expect(checkIllumination(1000000, lamps, query)).toHaveLength(query.length);
 //console.log(JSON.stringify(checkIllumination(1000, lamps, query)))
-      expect(checkIllumination(1000, lamps, query)).toStrictEqual(result);
+      expect(checkIllumination(1000000, lamps, query)).toStrictEqual(result);
     });
 });
