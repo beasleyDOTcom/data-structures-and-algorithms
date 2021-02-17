@@ -1,35 +1,24 @@
-class Stack{
-    constructor(){
-        this.top = null;
-    }
-    isEmpty(){
-        return this.top === null;
-    }
-    push(val){
-        this.top = new Node(val, this.top);
-    }
-    pop(){
-        let temp = this.top;
-        this.top = this.top.next;
-        return this.temp.value;
-    }
-}
-class Node{
-    constructor(value, next=null){
-        this.value = value;
-        this.next = next;
-    }
-}
+'use strict';
+
 function reverseQueue(q){
-    let stack = new Stack();
-    while(!q.isEmpty()){
-        stack.push(q.dequeue())
+    if(q.front === null){return 'Nothing to reverse'}
+    let B = q.front;
+    let A = null;
+    let C = B.next;
+    q.rear = B;
+
+      // front                              back
+      // 1 --> 2 --> 3 --> 4 --> 5 --> 6 --> null
+//                                     A     B     C
+//null<--1
+//     rear
+    while(B !== null){
+       C = B.next; 
+       B.next = A;
+        A = B;
+        B = C;
     }
-    console.log(stack.pop(), stack.pop())
-    while(!stack.isEmpty()){
-        q.enqueue(stack.pop())
-    }
-    console.log('this is the queue', q);
+    q.front = A;
     return q;
 }
 module.exports = reverseQueue;
