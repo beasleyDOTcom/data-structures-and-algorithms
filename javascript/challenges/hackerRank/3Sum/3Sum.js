@@ -26,9 +26,8 @@ console.log(numHash)
     // there is a number in our hash that matches our target number and this combonation hasn't been acheived yet.
     // what else do we need to know at this point?
     // So the main thing here is that I'm not using a number more times than it exists in the array. 
-    // so if we use it.. we decrement it
-    // if there is still 1 or more of that letter than you can use it
-    // then increment the ones you decremented
+    // so check to see if you are using the same number as the difference
+    // if you are, make sure you have enough
                    
                     if(nums[a] === difference || nums[b] === difference){
                         if(nums[a] === nums[b] && numHash[difference] > 2){
