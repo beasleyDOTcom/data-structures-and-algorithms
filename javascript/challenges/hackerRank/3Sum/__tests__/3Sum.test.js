@@ -18,8 +18,8 @@ describe('Given an array of integers, return an array with every unique combinat
         } 
         else {
             let sum = 0;
-            for(let i = 0; i < matrix.length; i++){
-                sum += matrix[i];
+            for(let i = 0; i < matrix[0].length; i++){
+                sum += matrix[0][i];
             }
             if(sum === 0){
                 isTrue = true;
@@ -46,6 +46,11 @@ describe('Given an array of integers, return an array with every unique combinat
     });
     it('should return true if sum function is supplied two arrays equaling 0', () => {
         expect(sum([[1,0,-1],[-1,-1,2]])).toBeTruthy();
+    });
+    it('should work with two zeros', () => {
+        const arr = [-1,0,1,0];
+        const response = threeSum(arr);
+        expect(sum(response)).toBeTruthy();
     });
 
 });
