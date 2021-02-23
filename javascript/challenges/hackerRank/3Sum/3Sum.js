@@ -13,7 +13,6 @@ function threeSum(nums) {
         }
         numHash[nums[i]]++;
     }
-console.log(numHash)
     let obj = {};
     for(let a = 0; a < nums.length; a++){
         for(let b = 0; b < nums.length; b++){
@@ -30,17 +29,23 @@ console.log(numHash)
     // if you are, make sure you have enough
                    
                     if(nums[a] === difference || nums[b] === difference){
-                        if(nums[a] === nums[b] && numHash[difference] > 2){
-                            result.push(trio);
-                            obj[trio] = true;
+                        if(nums[a] === nums[b]){
+                            if(numHash[difference] > 2){
+                                result.push(trio);
+                                obj[trio] = true;
+                            }
                         } 
-                        else if(nums[a] === difference && numHash[difference] > 1){
-                            result.push(trio);
-                            obj[trio] = true;
+                        else if(nums[a] === difference){
+                            if(numHash[difference] > 1){
+                                result.push(trio);
+                                obj[trio] = true;
+                            }
                         }
-                        else if(nums[b] === difference & numHash[difference] > 1){
-                            result.push(trio);
-                            obj[trio] = true;
+                        else if(nums[b] === difference){
+                            if(numHash[difference] > 1){
+                                result.push(trio);
+                                obj[trio] = true;
+                            }
                         }
                     } else {
                         result.push(trio);
