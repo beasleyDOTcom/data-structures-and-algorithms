@@ -17,20 +17,23 @@ seen set = [1,3,4,2]
 i = 4;
 code:
 */
-function removeDupes(arr){
+function removeDupes(arr) {
 	let seen = new Set();
-	for(let i = 0; i < arr.length; i++){//7
-		if(seen.has(arr[i])){
-	while(seen.has(arr[i])){
-arr.splice(i,1);
+	for (let i = 0; i < arr.length; i++) {
+		if (seen.has(arr[i])) {
+			while (seen.has(arr[i])) {
+				arr.splice(i, 1);
+			}
+			if (!seen.has(arr[i])) { 
+				seen.add(arr[i]) 
+			}
+		} else {
+			seen.add(arr[i]);
+		}
+	}
+	return arr;
 }
-if(!seen.has(arr[i])){ seen.add(arr[i])}
-} else {
-	seen.add(arr[i]);
-}
-}
-return arr;
-} 
+module.exports = removeDupes;
 /*
 Testing: so try to walk through this equation and mess it up so that I an bolster its' ability to handle various situations.
 
