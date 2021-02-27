@@ -1,4 +1,16 @@
 'use strict';
+/*
+ok so '13' should return ['13','23','43',]
+I know that I am mis conceptualizing the this problem 
+i don't necessarily need a nested for loop for each number, I could have a forloop forEach
+ 11 --> ["11", "22", "44", "12", "21", "14", "41", "24", "42"]
+
+ options for 1:  ->  [11, 21, 41]
+ looks at iterations of first number
+ looks at iterations of second number of result of first number
+ [11, ]
+*/
+
 
 function getPINs(observed) {
 
@@ -10,7 +22,7 @@ function getPINs(observed) {
             result.push(replacement + string.slice(1))            
         }
     }
-    result.push(observed)
+   // result.push(observed)
 
     for (let i = 0; i < observed.length; i++) {
         switch (observed[i]) {
