@@ -14,4 +14,7 @@ describe('should return missing number from range', () => {
         expect(missingNumber([9,6,4,2,3,5,7,0,1])).toBe(8);
     });
 
+    it('should return 1 if given [0]', () => {
+        expect(missingNumber([0])).toBe(1);
+    });
 });
