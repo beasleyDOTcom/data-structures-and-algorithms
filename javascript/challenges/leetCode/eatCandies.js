@@ -4,8 +4,8 @@
 // how many are allowed to be eaten?
 // if candy types < allowed to be eaten, return candy types
 // else if return allowed to be eaten.
-var distributeCandies = function(candyType) {
-    let types = {};
-    
-        
+function distributeCandies(candyType) {
+    const allowed = candyType.length / 2; // max candies allowed 
+    const types = new Set(candyType).size; // max candies available
+    return types > allowed ? allowed : types; 
 };
