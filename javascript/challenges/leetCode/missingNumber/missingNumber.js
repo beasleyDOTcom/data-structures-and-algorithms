@@ -6,7 +6,7 @@ function missingNumber(nums){
             return i;
         }
     }
-
+    return 0;
 }
 
 module.exports = missingNumber;
