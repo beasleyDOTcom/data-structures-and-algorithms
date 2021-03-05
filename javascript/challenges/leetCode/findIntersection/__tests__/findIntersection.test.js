@@ -3,7 +3,7 @@
 const findIntersection = require('../findIntersection.js');
 
 class Node{
-    constructor(value, next= null){
+    constructor(value, next=null){
       this.value = value;
       this.next = next;
     }
@@ -24,12 +24,12 @@ class Node{
   linked.add(4);
   
   const listA = new LinkedList();
-  listA.add(linked.head)
+  listA.head = linked.head;
   listA.add(11);
   listA.add(22);
   
   const listB = new LinkedList();
-  listB.add(linked.head)
+  listB.head = linked.head;
   listB.add(33);
   listB.add(44);
   listB.add(55);
@@ -44,12 +44,11 @@ class Node{
   listD.add(4);
   listD.add(5);
   
-
   describe('return the node at intersection of two linked lists', () => {
       it('should return null if lists do not intersect', () => {
-        expect(findIntersection(listC, listD)).toBeNull();     
+        expect(findIntersection(listC.head, listD.head)).toBeNull();     
       });
       it('should return node at intersection', () => {
-        expect(findIntersection(listA, listB)).toBe(linked.head);     
+        expect(findIntersection(listA.head, listB.head)).toBe(linked.head);     
       });
   });
