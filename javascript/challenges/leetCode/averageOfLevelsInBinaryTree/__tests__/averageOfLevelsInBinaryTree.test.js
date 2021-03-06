@@ -74,6 +74,6 @@ describe('Given a non-empty binary tree, return the average value of the nodes o
     tree.add(7);
 
     it('should output [3,14,5, 11]', () => {
-        expect(averageLevel(tree.root)).toBe([3,14.5, 11]);        
+        expect(averageLevel(tree.root)).toStrictEqual([3,14.5, 11]);        
     });
 });
