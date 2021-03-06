@@ -16,45 +16,39 @@ arr2.forEach push each child node into arr3
 
 
 */
-function averageLevel(root){
-    if(!root){return []}
+function averageLevel(root) {
+    if (!root) { return [] }
     const result = [];
     let Q = [];
 
     Q.push(root);
-    while(Q.length > 0){
-        let currentLevel = [];
+    while (Q.length > 0) {
+        let currentLevel = 0;
         let numOfNodes = Q.length;
-        for(let i = 0; i < numOfNodes; i++){
+        for (let i = 0; i < numOfNodes; i++) {
             let current = Q.shift();
-            currentLevel.push(current.val);
-            if(current.left){
+            currentLevel += current.val;
+            if (current.left) {
                 Q.push(current.left);
             }
-            if(current.right){
+            if (current.right) {
                 Q.push(current.right);
             }
         }
+        currentLevel = currentLevel / numOfNodes;
         result.push(currentLevel);
-    }
-    for(let i = 0; i < result.length; i++){
-        let temp = 0;
-        for(let k = 0; k < result[i].length; k++){
-            temp += result[i][k];
-        }
-        result[i] = temp / result[i].length;
     }
     return result;
 
 
 
     // const line = new Queue();
-    
+
     // function oneLevel(node){
     //     let level = [];
     //     let joined = [_nodeHelper(node.left), _nodeHelper(node.right)].flat();
     // }
-    
+
     // function _nodeHelper(node){
     //     if(!node){return}
     //     let arr = [];
