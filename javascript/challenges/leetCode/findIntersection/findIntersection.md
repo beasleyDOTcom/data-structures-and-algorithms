@@ -2,7 +2,7 @@
 
 ## problem domain:
 given the head of two linked lists, return the node at which they intersect.
-a -> b -> c
+a -> b -> c 
             \
              d -> e -> f -> g -> null
             /
