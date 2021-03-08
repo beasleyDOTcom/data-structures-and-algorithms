@@ -1,6 +1,7 @@
 'use strict';
 
 const Stack = require('../stack.js');
+const sumStack = require('../sumElements.js');
 
 describe('given a stack find the sum of all elements', () => {
     it('should return null if given empty stack', () => {
