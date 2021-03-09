@@ -43,3 +43,4 @@ class Node{
         this.next = next;
     }
 }
+module.exports = Stack;
