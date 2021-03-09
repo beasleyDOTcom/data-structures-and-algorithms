@@ -32,6 +32,6 @@ describe('given a stack find the sum of all elements', () => {
         stack.push(5);
         stack.push('5');
         stack.push(5)
-        expect(sumStack(stack)).toBeNull('Error, different types');
+        expect(sumStack(stack)).toStrictEqual('Error, different types');
     });
 });
