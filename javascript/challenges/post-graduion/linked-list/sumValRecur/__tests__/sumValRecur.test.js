@@ -37,5 +37,17 @@ describe('Given a linked list retun the sum of all elements', () => {
         const list = new LinkedList();
         expect(sumVal(list)).toBeNull();
     });
+    it('should throw Error() "Sorry, cannot sum unsupported values." if given a list with values that are not numbers or strings', () => {
+        const list = new LinkedList();
+        list.add(new Node('pizza'));
+        list.add(new Node('I miss you'));
+        expect( () => sumVal(list)).toThrow('Sorry, cannot sum unsupported values.');
+    });
+    it('should throw error Sorry, switching types is unsupported at this time,', () => {
+        const list = new LinkedList();
+        list.add('a');
+        list.add(1);
+        expect(() => sumVal(list)).toThrow('Sorry, switching types is unsupported at this time')
+    });
 
 });
