@@ -22,3 +22,7 @@ Check if number falls within the range of Math.pow(-2,31) and Math.pow(2, 31) - 
 
 Math.pow(-2, 31)-100 returns 0;
 Math.pow(2, 31)+100 returns 0;
+
+# Big O:
+-time: O(3)
+- O(n);
