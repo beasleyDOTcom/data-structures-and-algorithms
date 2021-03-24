@@ -6,8 +6,22 @@ a -> b -> c
             \
              d -> e -> f -> g -> null
             /
-i -> j -> k
+          k
 return reference to node at beginning of intersection: a reference to a node with a value of d.
+a b c d e f g
+g f e d k
+
+
+a -> b -> c 
+            \
+             d -> a -> f -> a -> null
+            /
+          k
+
+list a: a b c d a f a -> k d a f a
+list b: k d a f a -> a b c d a f a
+
+if one list has an advantage
 
 a -> b -> c -> null
 
