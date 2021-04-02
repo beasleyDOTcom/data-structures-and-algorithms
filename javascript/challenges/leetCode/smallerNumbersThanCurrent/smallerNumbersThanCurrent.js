@@ -1,10 +1,17 @@
 'use strict';
 
-function smallerNumbersThanCurrent(nums){
-    let sorted = nums.sort();
+function smallerNumbersThanCurrent(nums) {
     let result = [];
-    for(let i = 0; i < sorted.length)
-
+    for (let i = 0; i < nums.length; i++) {
+        let count = 0;
+        for (let j = 0; j < nums.length; j++) {
+            if (nums[j] < nums[i]) {
+                count++;
+            }
+        }
+        result.push(count)
+    }
+    return result;
 }
 
 module.exports = smallerNumbersThanCurrent;

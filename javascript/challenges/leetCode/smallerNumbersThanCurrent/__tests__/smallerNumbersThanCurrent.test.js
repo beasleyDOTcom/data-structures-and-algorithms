@@ -4,6 +4,7 @@
 Example 1:
 
 Input: nums = [8,1,2,2,3]
+sorted = num >[1,2,3]
 Output: [4,0,1,1,3]
 Explanation: 
 For nums[0]=8 there exist four smaller numbers than it (1, 2, 2 and 3). 
