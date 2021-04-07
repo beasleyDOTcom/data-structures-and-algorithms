@@ -18,9 +18,8 @@ describe('should build array in specific order', () => {
 
         let  nums = [0,1,2,3,4];
         let index = [0,1,2,2,1];
-        let output = [0,4,1,3,2];
 
-        expect(createTargetArrayInOrder(nums,index)).toBe(output);
+        expect(createTargetArrayInOrder(nums,index)).toStrictEqual([0,4,1,3,2]);
     });
 
     it('pass second test', () => {
@@ -36,14 +35,12 @@ describe('should build array in specific order', () => {
 
         let  nums = [1,2,3,4,0];
         let index = [0,1,2,3,0];
-        let output = [0,1,2,3,4];
     
-        expect(createTargetArrayInOrder(nums,index)).toBe(output);
+        expect(createTargetArrayInOrder(nums,index)).toStrictEqual([0,1,2,3,4]);
     });
     it('should pass third basic test', () => {
         let nums = [1];
         let index = [0];
-        let output = [1];
-        expect(createTargetArrayInOrder(nums,index)).toBe(output);
+        expect(createTargetArrayInOrder(nums,index)).toStrictEqual([1]);
     });
 });
