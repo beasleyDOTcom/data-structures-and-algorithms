@@ -13,6 +13,9 @@ Step 4) 3 is odd; subtract 1 and obtain 2.
 Step 5) 2 is even; divide by 2 and obtain 1. 
 Step 6) 1 is odd; subtract 1 and obtain 0.
 */
+
+const numberOfSteps = require('../stepsToReduceNumToZero.js');
+
 describe('return number of Steps to reduce a number to zero given provided operations', () => {
     it('should handle 14', () => {
         expect(numberOfSteps(14)).toStrictEqual(6);
