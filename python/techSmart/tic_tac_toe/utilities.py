@@ -1,3 +1,7 @@
+import random
+
+
+
 def print_board(board_list): 
   print('''
    {} | {} | {}
@@ -40,3 +44,12 @@ def is_valid_move(player_choice, answers_list):
 
 def declare_winner(player):
   return print('Congratulations player ' + player + ', You\'ve Won!')
+
+def xoxo():
+  randInt = random.randint(0,1)
+  if randInt == 1:
+    xo = ['X', 'O']
+  else:
+    xo = ['O', 'X']
+
+  return xo

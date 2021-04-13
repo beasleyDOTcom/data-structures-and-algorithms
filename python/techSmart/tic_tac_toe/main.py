@@ -2,12 +2,6 @@ import utilities
 
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
-print("Welcome to Tic Tac Toe! Player X will go first, followed by Player O. The grid is numbered as seen below.")
-
-utilities.print_positions()
-
-print("On your turn, enter the number of an open spot to place your mark. The first player to get three marks in a row is the winner!")
-
 dict_hash = {}
 dict_hash['0'] = [[0,1,2],[0,4,8], [0,3,6]]
 dict_hash['1'] = [[0,1,2], [1,4,7]]
@@ -36,8 +30,16 @@ dict_hash['8'] = [[6,7,8], [0,4,8], [2,5,8]]
 answers_list = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
 
 utilities.print_board(answers_list)
+def one_player():
+  print('made it into one player')
 def two_player():
-  player = 'X'
+  xoxo = utilities.xoxo()
+  utilities.print_positions()
+  print('Player ' + xoxo[0] +' will go first, followed by Player ' + xoxo[1] + '.')
+
+  print("On your turn, enter the number of an open spot to place your mark. The first player to get three marks in a row is the winner!")
+
+  player = xoxo[0]
   total_number_of_moves = 0
 
   while total_number_of_moves < 9:
@@ -69,7 +71,14 @@ def two_player():
         print('Oops, your opponent has already placed their mark in that location! Please enter a number 1-9 that hasn\'t been played yet.')
 
   print('It\'s a tie!!!')
-two_player()
+print("Welcome to Tic Tac Toe!")
+oneOrTwo = input('If you would like to play versus the computer enter "1", if would like to play the 2player version with someone else, enter "2"')
+print("The grid is numbered as seen below.")
+
+if oneOrTwo == '1':
+  one_player()
+elif oneOrTwo == '2':
+  two_player()
 # perhaps has_won(player_choice) can reduce the seach area by taking in the players choice and using that to see if that last choice has made the player the winner
 
 # mayber has_won has a dictionary for each place that knows where to find a win for each number
