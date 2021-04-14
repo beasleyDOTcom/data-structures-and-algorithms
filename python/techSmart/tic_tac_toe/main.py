@@ -30,6 +30,7 @@ dict_hash['8'] = [[6,7,8], [0,4,8], [2,5,8]]
 answers_list = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
 
 utilities.print_board(answers_list)
+
 def one_player():
   print('made it into one player')
 def two_player():
