@@ -21,7 +21,7 @@ def change_player(player):
     player = 'X'
   return player
 
-def has_won(answers_list, player_choice, player, where_to_look):
+def has_won(answers_list, player, where_to_look):
   for line in where_to_look:
     has_all_three = True;
     for mark in line:
@@ -30,7 +30,7 @@ def has_won(answers_list, player_choice, player, where_to_look):
     if has_all_three:
       return True
   return False
-        
+
 def is_valid_move(player_choice, answers_list):
   if player_choice % 1 != 0:
     return False
@@ -56,7 +56,18 @@ def xoxo():
 def return_zero_or_one():
   return random.randint(0,1)
 def computer_turn(answers_list, computer):
-  return 'ha'
+  # if the middle hasn't been taken yet, go there
+  if answers_list[4] == ' ':
+     answers_list[4] = computer
+     return '4'
+  # now, see if opponent (player) is one move away from winning
+  i = 0
+  for position in answers_list:
+    if position == ' ':
+      answers_list[i] = computer  
+      return str(i)
+    else:
+      i += 1
 
 def player_turn(answers_list, player):
   player_choice = float(input('Player ' + player + ', please enter number where you would like to place your mark: ' )) - 1
