@@ -65,6 +65,7 @@ def one_player():
       total_number_of_moves += 1
       if utilities.has_won(answers_list, player, dict_hash[player_choice]):
         return utilities.declare_winner(player)
+  print("Good match! It's a tie!")
         
 
 

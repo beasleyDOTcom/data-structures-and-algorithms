@@ -66,6 +66,9 @@ def computer_turn(answers_list, computer):
     if position == ' ':
       answers_list[i] = computer  
       return str(i)
+    elif answers_list[len(answers_list) - 1] == ' ':
+      answers_list[len(answers_list) -1] = computer  
+      return str(len(answers_list)-1)    
     else:
       i += 1
 
