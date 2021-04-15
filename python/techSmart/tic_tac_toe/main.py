@@ -32,7 +32,39 @@ answers_list = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
 utilities.print_board(answers_list)
 
 def one_player():
-  print('made it into one player')
+  xoxo = utilities.xoxo()
+  player = xoxo[0]
+  computer = xoxo[1]
+  total_number_of_moves = 1
+  utilities.print_positions()
+  
+  # decide who goes first and setup last_player
+  if utilities.return_zero_or_one():
+    print('The computer has been randomly been selected to go first.')
+    print('No Really! It was totally randome! I had nothing to do with it?...')
+    utilities.computer_turn(answers_list, computer)
+    last_player = 'computer'
+  else:
+    print('You have been randomly selected to go first')
+    utilities.player_turn(answers_list, player)
+    last_player = 'player'
+
+  # get the ball rolling
+  while total_number_of_moves < 9:
+    if last_player == 'player':
+      utilities.computer_turn(answers_list, computer)
+      last_player = 'computer'
+      total_number_of_moves += 1
+    else:
+      player_choice = utilities.player_turn(answers_list, player)
+      last_player = 'player'
+      total_number_of_moves += 1
+      if utilities.has_won(answers_list, player_choice, player, dict_hash[player_choice]):
+        return utilities.declare_winner(player)
+        
+
+
+
 def two_player():
   xoxo = utilities.xoxo()
   utilities.print_positions()

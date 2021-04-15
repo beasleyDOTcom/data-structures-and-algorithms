@@ -53,3 +53,28 @@ def xoxo():
     xo = ['O', 'X']
 
   return xo
+def return_zero_or_one():
+  return random.randint(0,1)
+def computer_turn(answers_list, computer):
+  return 'ha'
+
+def player_turn(answers_list, player):
+  player_choice = float(input('Player ' + player + ', please enter number where you would like to place your mark: ' )) - 1
+  if is_valid_move(player_choice, answers_list):
+    player_choice = int(player_choice)
+    answers_list[player_choice] = player
+    player_choice = str(player_choice)
+    print_board(answers_list)
+    return player_choice
+      
+  else:
+    if player_choice < 0 or player_choice > 8:
+      print('Oops, that didn\'t work!, entries must be 1-9')
+    elif player_choice % 1 != 0:
+      print('Oops, this game does not accept numbers with decimal e.g. 1.1 or 2.3')
+      print('Please enter a whole number 1-9')
+    elif answers_list[int(player_choice)] == player:
+      print('Oops, You\'ve already played there! Please enter a number 1-9 that has not been played yet')
+    else:
+      print('Oops, your opponent has already placed their mark in that location! Please enter a number 1-9 that hasn\'t been played yet.')
+    return player_turn(answers_list, player)
