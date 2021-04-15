@@ -30,8 +30,46 @@ dict_hash['8'] = [[6,7,8], [0,4,8], [2,5,8]]
 answers_list = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
 
 utilities.print_board(answers_list)
+
 def one_player():
-  print('made it into one player')
+  xoxo = utilities.xoxo()
+  player = xoxo[0]
+  computer = xoxo[1]
+  total_number_of_moves = 1
+  utilities.print_positions()
+
+  # decide who goes first and setup last_player
+  if utilities.return_zero_or_one():
+    print('The computer has been randomly been selected to go first.')
+    print('No Really! It was totally randome! I had nothing to do with it?...')
+    utilities.computer_turn(answers_list, computer)
+    last_player = 'computer'
+    utilities.print_board(answers_list)
+  else:
+    print('You have been randomly selected to go first')
+    utilities.player_turn(answers_list, player)
+    last_player = 'player'
+
+  # get the ball rolling
+  while total_number_of_moves < 9:
+    if last_player == 'player':
+      computer_choice = utilities.computer_turn(answers_list, computer)
+      last_player = 'computer'
+      total_number_of_moves += 1
+      utilities.print_board(answers_list)
+      if utilities.has_won(answers_list, computer, dict_hash[computer_choice]):
+        return print('Oh, too bad! The computer has won! Please try again!')
+    else:
+      player_choice = utilities.player_turn(answers_list, player)
+      last_player = 'player'
+      total_number_of_moves += 1
+      if utilities.has_won(answers_list, player, dict_hash[player_choice]):
+        return utilities.declare_winner(player)
+  print("Good match! It's a tie!")
+        
+
+
+
 def two_player():
   xoxo = utilities.xoxo()
   utilities.print_positions()
@@ -51,7 +89,7 @@ def two_player():
       answers_list[player_choice] = player
       player_choice = str(player_choice)
 
-      if utilities.has_won(answers_list, player_choice, player, dict_hash[player_choice]):
+      if utilities.has_won(answers_list, player, dict_hash[player_choice]):
         utilities.print_board(answers_list)
         return utilities.declare_winner(player)
         
