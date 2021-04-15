@@ -133,4 +133,10 @@ I feel like the hardest part of fulfilling this prompt is determining an efficie
 I couldn't really come up with anything clever so I followed the red, green, refactor rule by first getting a solution before I worry about improving that solution
 
 Given enough time, I would figure out a way to differentiate the regular prompts vs. "errors" 
+
+5 days later...
+
+Took a few hours after making the learning assessment to work on getting the one player working. It took more work than I thought to reengineer the way this worked but I'm happy with the result.
+
+If I had more time now.. I would make an offensive mode and a defensive mode to coincide with whether the computer got the first turn or not. 
 """
