@@ -36,6 +36,7 @@ def one_player():
   player = xoxo[0]
   computer = xoxo[1]
   total_number_of_moves = 1
+  print("The grid is numbered as seen below.")
   utilities.print_positions()
 
   # decide who goes first and setup last_player
@@ -45,8 +46,12 @@ def one_player():
     utilities.computer_turn(answers_list, computer)
     last_player = 'computer'
     utilities.print_board(answers_list)
+    print("On your turn, enter the number of an open spot to place your mark. The first player to get three marks in a row is the winner!")
+
   else:
     print('You have been randomly selected to go first')
+    print("Enter the number of an open spot to place your mark. The first player to get three marks in a row is the winner!")
+
     utilities.player_turn(answers_list, player)
     last_player = 'player'
 
@@ -72,6 +77,7 @@ def one_player():
 
 def two_player():
   xoxo = utilities.xoxo()
+  print("The grid is numbered as seen below.")
   utilities.print_positions()
   print('Player ' + xoxo[0] +' will go first, followed by Player ' + xoxo[1] + '.')
 
@@ -111,7 +117,6 @@ def two_player():
   print('It\'s a tie!!!')
 print("Welcome to Tic Tac Toe!")
 oneOrTwo = input('If you would like to play versus the computer enter "1", if would like to play the 2player version with someone else, enter "2"')
-print("The grid is numbered as seen below.")
 
 if oneOrTwo == '1':
   one_player()
