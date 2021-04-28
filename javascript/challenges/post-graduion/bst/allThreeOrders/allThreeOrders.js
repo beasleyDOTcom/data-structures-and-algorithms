@@ -18,7 +18,7 @@ Each BST node has an integer value, a left child node, and a right child node. A
 
 Input
 
-tree = 		10
+tree =	      10
 		      /	\
 		    5	  15
 		  /   \		\
@@ -74,41 +74,45 @@ left right root
 
 // REFACTORED
 
-function inOrderTraverse(tree, array) {
+    function inOrder(root, array) {
     // left root right
       if(!root){
         return;
       }
-      inOrderTraverse(root.left, array);
+      inOrder(root.left, array);
       array.push(root.value);
-      inOrderTraverse(root.right, array);
+      inOrder(root.right, array);
+  
       return array
     }
     
-    function preOrderTraverse(tree, array) {
+    function preOrder(root, array) {
       // root left right
       if(!root){
         return;
       }
       array.push(root.value);
-      preOrderTraverse(root.left, array);
-      preOrderTraverse(root.right, array);
+      preOrder(root.left, array);
+      preOrder(root.right, array);
       return array;
     }
     
-    function postOrderTraverse(tree, array) {
+    function postOrder(root, array) {
       // left right root
       if(!root){
         return;
       }
-      preOrderTraverse(root.left, array);
-      preOrderTraverse(root.right, array);
+      console.log(root.value)
+
+      preOrder(root.left, array);
+      preOrder(root.right, array);
+
       array.push(root.value);
       return array;
     }
     
-    module.exports = { inOrderTraverse, preOrderTraverse, postOrderTraverse };
-    
+    module.exports = { inOrder, preOrder, postOrder };
+
     
     // function inOrderTraverse(tree, array) {
     // 	if(tree !== null){
