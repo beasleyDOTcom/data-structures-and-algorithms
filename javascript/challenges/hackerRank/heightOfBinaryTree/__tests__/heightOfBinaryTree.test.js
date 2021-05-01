@@ -21,7 +21,8 @@ describe('should return max height of binary tree ', () => {
     });
     it('should return 0 if given a tree with only one node', () => {
         let bst = new BinaryTree();
-        expect(getHeight(1, bst.addOne(new Node(1)))).toStrictEqual(0)
+        bst.addOne(new Node(1))
+        expect(getHeight(1, bst)).toStrictEqual(0)
     });
     it('should return 1 if given a tree with only three nodes with two at equal height', () => {
         let bst = new BinaryTree();

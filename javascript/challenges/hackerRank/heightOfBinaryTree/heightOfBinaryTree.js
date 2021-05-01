@@ -48,7 +48,7 @@ function maxEdges(n, tree) {
     let maxNumberOfCalls = 0;
     function _helper(currentNumberOfCalls, node) {
         if (!node) { return }
-        if (currentNumberOfCalls + 1 > maxNumberOfCalls){
+        if (currentNumberOfCalls > maxNumberOfCalls){
             maxNumberOfCalls += 1;
         }
         _helper(currentNumberOfCalls + 1, node.left);
@@ -56,7 +56,7 @@ function maxEdges(n, tree) {
 	
     }
     _helper(0, tree.root)
-	return maxNumberOfCalls-1;
+	return maxNumberOfCalls;
 }
 module.exports = maxEdges;
 
