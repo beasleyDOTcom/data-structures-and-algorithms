@@ -56,7 +56,7 @@ function maxEdges(n, tree) {
 	
     }
     _helper(0, tree.root)
-	return maxNumberOfCalls;
+	return maxNumberOfCalls-1;
 }
 module.exports = maxEdges;
 
