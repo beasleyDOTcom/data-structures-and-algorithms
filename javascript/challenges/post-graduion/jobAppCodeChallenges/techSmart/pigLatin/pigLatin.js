@@ -54,7 +54,7 @@ function convertToPigLatin(string) {
             i++;
         }
     }
-
+//pig
     for (let k = i; k < string.length; k++) {
         newString += string[k];
     }
