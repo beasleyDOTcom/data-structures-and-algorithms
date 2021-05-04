@@ -51,15 +51,20 @@ def truncateSentence(s: str, k: int) -> str:
     result = s[0]
     numberOfSpaces = 0
 
-    while numberOfSpaces < k and i <= len(s):
+
+    while numberOfSpaces < k and i < len(s):
         if s[i] == ' ':
             numberOfSpaces += 1
+        if numberOfSpaces >= k:
+            break
         result += s[i]
         i += 1
-
     return result
-print('________' + truncateSentence('Hello how are you Contestant', 4) + '________')
-        
+
+assert truncateSentence('Hello how are you Contestant', 4) == "Hello how are you"
+assert truncateSentence("chopper is not a tanuki", 5) == "chopper is not a tanuki"
+
+
 
 # Input: s = "Hello how are you Contestant", k = 4
 # Output: "Hello how are you"
