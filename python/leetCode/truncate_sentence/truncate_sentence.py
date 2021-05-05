@@ -52,7 +52,7 @@ def truncateSentence(s: str, k: int) -> str:
     numberOfSpaces = 0
 
 
-    while numberOfSpaces < k and i < len(s):
+    while i < len(s):
         if s[i] == ' ':
             numberOfSpaces += 1
         if numberOfSpaces >= k:
