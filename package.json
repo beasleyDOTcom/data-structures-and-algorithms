@@ -14,7 +14,8 @@
     "cheerio": "1.0.0-rc.3",
     "express": "4.17.1",
     "jest": "^24.9.0",
-    "mustache": "4.0.1"
+    "mustache": "4.0.1",
+    "pytest": "^1.0.0"
   },
   "devDependencies": {
     "supertest": "4.0.2"
