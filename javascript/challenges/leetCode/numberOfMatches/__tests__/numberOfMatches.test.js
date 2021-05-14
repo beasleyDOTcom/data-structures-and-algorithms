@@ -36,6 +36,9 @@ describe('Basic test of numberOfMatches', () => {
     it('should pass second test', () => {
         expect(numberOfMatches(14)).toStrictEqual(13);
     });
+    it('shoudl handle having only 1 team', () => {
+        expect(numberOfMatches(1)).toStrictEqual(0);
+    });
 
 });
 
