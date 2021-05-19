@@ -13,7 +13,7 @@ The earlier year between them is 1960.
 */
 describe('Basic test of maximumPopulation', () => {
     it('should import maximumPopulation', () => {
-        expect(maximumPopulation()).not.toBeNull();
+        expect(maximumPopulation([[1,1],[1,1]])).not.toBeNull();
     });
     it('should handle first case', () => {
         expect(maximumPopulation([[1993,1999],[2000,2010]])).toStrictEqual(1993)
