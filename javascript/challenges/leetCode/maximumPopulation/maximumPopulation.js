@@ -11,8 +11,7 @@
 // 1996
 //[[1995,1999],[1996,1998],[1995,1998],[1996,2000]]
 // algorithm:
-// narray down the years to search by 
-// found 
+// narraw down the years to search through to determine the earliest year with highest or equal value
 
 // ---------->>> [ [1950,1961],   [1960,1971],   [1970,1981]]
  function maximumPopulation(logs){ 
@@ -21,15 +20,6 @@
    let currentYear = logs[0][0];  // ----->    1950
    // find highest death year in population -> 1961 -> 1971, -> 1981
    let highest = logs[0][1];
-   for(let i = 1; i < logs.length; i++){
-      // find earliest year in population
-      if(logs[i][0] < currentYear){ // 1950, 
-         currentYear = logs[i][0];
-      }
-      if(logs[i][1] > highest){
-         highest = logs[i][1];
-      }
-   }
 
    let best = {
       count : 1,

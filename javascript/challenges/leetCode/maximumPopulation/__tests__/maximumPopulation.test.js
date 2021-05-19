@@ -1,4 +1,4 @@
-const maximumPopulation = require('../maximumPopulation.js');
+const maximumPopulation = require('../maximumPopulationRefactored.js');
 /*
 Input: logs = [[1993,1999],[2000,2010]]
 Output: 1993
