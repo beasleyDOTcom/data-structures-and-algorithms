@@ -34,26 +34,30 @@
       year : currentYear
    }
 
+   function getPopulationByYear(arr, index, year, count){
+      // if we are done looking
+      if(index === arr.length){return count}
+      //  if person was alive between birth and death 
+      if(arr[index][0] <= year && year < arr[index][1]){
+         //  one for every person alive during current year 
+         return getPopulationByYear(arr, index + 1, year, count +1);
+      } else return getPopulationByYear(arr, index +1, year, count);
+   }
+
    // enumerates every year between currentYear and highest
    while (currentYear <= highest){
      
-//    does currentYear have more people who are living this year than the best year?
-      let currentCount = 0;
-      for(let k = 0; k < logs.length; k++){
-//           if person was alive between birth and death 
-         if(logs[k][0] <= currentYear && currentYear < logs[k][1]){
-//          one for every person alive during current 
-            currentCount++;
-         }
-      }
-//       if this year had a higher population than best
+      let currentCount = getPopulationByYear(logs, 0, currentYear, 0);
+      // does currentYear have more people who are living this year than the best year?
       if(currentCount > best.count){
+         // if so, update best
          best.count = currentCount;
          best.year = currentYear;
       }
       
       currentYear += 1;
    }
+
    
    return best.year;   
  } 
