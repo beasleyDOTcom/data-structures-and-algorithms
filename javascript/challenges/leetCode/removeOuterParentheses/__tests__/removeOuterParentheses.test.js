@@ -2,7 +2,7 @@ const removeOuterParentheses = require('../removeOuterParentheses.js');
 
 describe('Basic test of removeOuterParentheses', () => {
     it('should import removeOuterParentheses', () => {
-        expect(removeOuterParentheses()).not.toBeNull();
+        expect(removeOuterParentheses('')).not.toBeNull();
     });
     it('should pass first test', () => {
         let s = "(()())(())";
