@@ -1,4 +1,4 @@
-const removeOuterParentheses = require('../removeOuterParentheses.js');
+const removeOuterParentheses = require('../refactoredRemoveOuterParentheses.js');
 
 describe('Basic test of removeOuterParentheses', () => {
     it('should import removeOuterParentheses', () => {
@@ -17,6 +17,11 @@ describe('Basic test of removeOuterParentheses', () => {
     it('should pass third test', () => {
         let s = "()()()";
         let expected =  "";
+        expect(removeOuterParentheses(s)).toStrictEqual(expected);
+    });
+    it('should test leftFacing parentheses', () => {
+        let s = "((()))"
+        let expected = "(())"
         expect(removeOuterParentheses(s)).toStrictEqual(expected);
     });
 });
