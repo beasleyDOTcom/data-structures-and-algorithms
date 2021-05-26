@@ -43,6 +43,16 @@ describe('Basic test of levelOrderTraversal', () => {
         expect(levelOrderTraversal(input.root)).toStrictEqual(expected);
 
     });
+    it('should handle another tree with unconnected nodes', () => {
+//   input:    1
+//         2       3
+//      4     5        6
+
+// output  [[1],[2,3], [4,5,6]]
+        let input = new BinaryTree();
+        input.root = new Node(1, new Node(2, new Node(4), new Node(5)),  new Node(3, null, new Node(6)));
+        expect(levelOrderTraversal(input.root)).toStrictEqual([[1],[2,3], [4,5,6]]);
+    });
     it('should return array with one if given only one node at root', () => {
         let input = new BinaryTree();
         input.root = new Node(3);
