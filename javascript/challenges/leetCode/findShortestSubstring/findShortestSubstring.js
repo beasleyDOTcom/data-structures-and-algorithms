@@ -26,6 +26,55 @@ find the two words that share the most letters in order, and then combine them r
 input: ['shell', 'hello', 'oh', 'bombs']
 output: 'bombshelloh'
 */
+
+function numOfSharedLetters(firstWord, secondWord) {
+    // takes in two words and returns the number of consecutive letters the second word shares with the first.
+    // hello -> shell --> 4
+    // h -> he -> hel -> hell
+    let regex;
+    let frontTestWord = '';
+    for (let i = 0; i < secondWord.length; i++) {
+        regex = new RegExp(frontTestWord + secondWord[i], 'gm')
+        if (regex.test(firstWord, 'gm')) {
+            frontTestWord += secondWord[i];
+        } else {
+            break;
+        }
+    }
+
+    regex = new RegExp(frontTestWord, 'gi')
+    let indexOfSecondWordInFirst = firstWord.search(regex);
+    // let longestWord = frontTestWord.length > backTestWord.length ? frontTestWord : backTestWord;
+    return { longestWord: frontTestWord, indexOfSecondWordInFirst };
+}
+
+
+function joinWords(indexOne, indexTwo, indexOfSecondWordInFirst, array){
+    console.log('joinWords:     ',array)
+
+  let first = array[indexOne];
+  let second = array[indexTwo];
+
+  if(indexOne > indexTwo){
+    array.splice(indexOne, 1);
+    array.splice(indexTwo, 1);
+  } else {
+    array.splice(indexTwo, 1);
+    array.splice(indexOne, 1);
+  }
+    console.log('after splice: ', array)
+
+  if (indexOfSecondWordInFirst === 0){
+    array.push(first + second);
+  } else {
+    array.push(first.substring(0, indexOfSecondWordInFirst) + second);
+  }
+  console.log('after concatenating: ', array)
+  return array
+}
+
+
+
 function findShortestSubstring(words){
 
     if(words.length === 1){
@@ -49,51 +98,9 @@ function findShortestSubstring(words){
 
 
 
-    function numOfSharedLetters(firstWord, secondWord) {
-        // takes in two words and returns the number of consecutive letters the second word shares with the first.
-        // hello -> shell --> 4
-        // h -> he -> hel -> hell
-        let regex;
-        let frontTestWord = '';
-        for (let i = 0; i < secondWord.length; i++) {
-            regex = new RegExp(frontTestWord + secondWord[i], 'gm')
-            if (regex.test(firstWord, 'gm')) {
-                frontTestWord += secondWord[i];
-            } else {
-                break;
-            }
-        }
+
+
     
-        regex = new RegExp(frontTestWord, 'gi')
-        let indexOfSecondWordInFirst = firstWord.search(regex);
-        // let longestWord = frontTestWord.length > backTestWord.length ? frontTestWord : backTestWord;
-        return { longestWord: frontTestWord, indexOfSecondWordInFirst };
-    }
-
-    function joinWords(indexOne, indexTwo, indexOfSecondWordInFirst, array){
-          console.log('joinWords:     ',array)
-
-        let first = array[indexOne];
-        let second = array[indexTwo];
-
-        if(indexOne > indexTwo){
-          array.splice(indexOne, 1);
-          array.splice(indexTwo, 1);
-        } else {
-          array.splice(indexTwo, 1);
-          array.splice(indexOne, 1);
-        }
-          console.log('after splice: ', array)
-
-        if (indexOfSecondWordInFirst === 0){
-          array.push(first + second);
-        } else {
-          array.push(first.substring(0, indexOfSecondWordInFirst) + second);
-        }
-        console.log('after concatenating: ', array)
-        return array
-    }
-
     while(words.length > 1){
         for(let i = 0; i < words.length; i++){
             // shell
@@ -127,7 +134,7 @@ function findShortestSubstring(words){
 } 
 
 
- module.exports = findShortestSubstring
+ module.exports = {findShortestSubstring, numOfSharedLetters, joinWords}
 
 
 
