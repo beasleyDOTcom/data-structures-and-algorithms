@@ -1,22 +1,32 @@
-const findShortestSubstring = require('../findShortestSubstring.js');
+const { findShortestSubstring, numOfSharedLetters, joinWords } = require('../findShortestSubstring.js');
+
+
+describe.only('should test numOfSharedLetters', () => {
+    it('should return "" if given words that don\'t combine', () => {
+        expect(numOfSharedLetters('alex', 'loves').longestWord).toHaveLength(0);
+    });
+    it('should return hell if given seashell and hello', () => {
+        expect(numOfSharedLetters('seashell', 'hello').longestWord).toStrictEqual('hell');
+    });
+});
 
 describe('Basic test of findShortestSubstring', () => {
     it('should import findShortestSubstring', () => {
 
-        expect(findShortestSubstring([],'')).not.toBeNull();
+        expect(findShortestSubstring([], '')).not.toBeNull();
     });
-    
+
     it('should just join things if there\'s nothing to do', () => {
-        
-// Input: words = ["alex","loves","leetcode"]
-// Output: "alexlovesleetcode"
-        let words = ["alex","loves","leetcode"];
+
+        // Input: words = ["alex","loves","leetcode"]
+        // Output: "alexlovesleetcode"
+        let words = ["alex", "loves", "leetcode"];
         let output = "alexlovesleetcode";
         expect(findShortestSubstring(words, '')).toHaveLength(output.length);
     });
     it('should reduce string as much as possible', () => {
-     let words = ["catg","ctaagt","gcta","ttca","atgcatc"];
-     let output = "gctaagttcatgcatc";
+        let words = ["catg", "ctaagt", "gcta", "ttca", "atgcatc"];
+        let output = "gctaagttcatgcatc";
 
         expect(findShortestSubstring(words, '')).toHaveLength(output.length);
     });
