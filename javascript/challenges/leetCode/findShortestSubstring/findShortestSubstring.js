@@ -29,7 +29,7 @@ output: 'bombshelloh'
 
 function numOfSharedLetters(firstWord, secondWord) {
     // takes in two words and returns the number of consecutive letters the second word shares with the first.
-    // hello -> shell --> 4
+    // hello -> shell --> 3
     // h -> he -> hel -> hell
     let regex;
     let frontTestWord = '';
@@ -42,8 +42,16 @@ function numOfSharedLetters(firstWord, secondWord) {
         }
     }
 
-    regex = new RegExp(frontTestWord, 'gi')
-    let indexOfSecondWordInFirst = firstWord.search(regex);
+    regex = new RegExp(frontTestWord + '$', 'gi')
+    let indexOfSecondWordInFirst;
+    if(regex.test(firstWord)){
+        console.log('made it')
+        indexOfSecondWordInFirst = firstWord.search(regex);
+        return { longestWord: frontTestWord, indexOfSecondWordInFirst };
+    } else {
+        frontTestWord = '';
+        indexOfSecondWordInFirst=0;
+    }
     // let longestWord = frontTestWord.length > backTestWord.length ? frontTestWord : backTestWord;
     return { longestWord: frontTestWord, indexOfSecondWordInFirst };
 }
