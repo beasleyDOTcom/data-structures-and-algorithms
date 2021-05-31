@@ -8,6 +8,12 @@ describe.only('should test numOfSharedLetters', () => {
     it('should return hell if given seashell and hello', () => {
         expect(numOfSharedLetters('seashell', 'hello').longestWord).toStrictEqual('hell');
     });
+    it('should return word with length 2 if given "pesche" and "hello"', () => {
+        expect(numOfSharedLetters('pesche', 'hell0').longestWord).toHaveLength(2);
+    });
+    it('should return "he" if given "pesche" and "hello', () => {
+        expect(numOfSharedLetters("pesche", "hello").longestWord).toStrictEqual('he');
+    });
 });
 
 describe('Basic test of findShortestSubstring', () => {
