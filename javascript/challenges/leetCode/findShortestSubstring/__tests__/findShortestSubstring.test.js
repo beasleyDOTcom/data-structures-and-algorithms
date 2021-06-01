@@ -1,7 +1,7 @@
 const { findShortestSubstring, numOfSharedLetters, joinWords } = require('../findShortestSubstring.js');
 
 
-describe.only('should test numOfSharedLetters', () => {
+describe('should test numOfSharedLetters', () => {
     it('should return "" if given words that don\'t combine', () => {
         expect(numOfSharedLetters('alex', 'loves').longestWord).toHaveLength(0);
     });
@@ -15,7 +15,17 @@ describe.only('should test numOfSharedLetters', () => {
         expect(numOfSharedLetters("pesche", "hello").longestWord).toStrictEqual('he');
     });
 });
+describe('should test joinWords', () => {
+    it('should return "beasleyloves', () => {
+        let array = ['beasley', 'loves','golden', 'gardens'];
 
+        expect(joinWords(0,1,0, array)[array.length-1]).toStrictEqual('beasleyloves');
+    });
+    it('should join two words', () => {
+        let array = ['seashell', 'hello','pizza', 'sticks'];
+        expect(joinWords(0,1,4,array)[array.length-1]).toStrictEqual('seashello');
+    });
+});
 describe('Basic test of findShortestSubstring', () => {
     it('should import findShortestSubstring', () => {
 
