@@ -33,6 +33,9 @@ function numOfSharedLetters(firstWord, secondWord) {
     // h -> he -> hel -> hell
     let regex;
     let frontTestWord = '';
+    if(firstWord === '' || secondWord === ''){
+        return
+    }
     for (let i = 0; i < secondWord.length; i++) {
         regex = new RegExp(frontTestWord + secondWord[i], 'gm')
         if (regex.test(firstWord, 'gm')) {
@@ -45,20 +48,19 @@ function numOfSharedLetters(firstWord, secondWord) {
     regex = new RegExp(frontTestWord + '$', 'gi')
     let indexOfSecondWordInFirst;
     if(regex.test(firstWord)){
-        console.log('made it')
         indexOfSecondWordInFirst = firstWord.search(regex);
-        return { longestWord: frontTestWord, indexOfSecondWordInFirst };
+        return { sharedLetters: frontTestWord, indexOfSecondWordInFirst };
     } else {
         frontTestWord = '';
         indexOfSecondWordInFirst=0;
     }
     // let longestWord = frontTestWord.length > backTestWord.length ? frontTestWord : backTestWord;
-    return { longestWord: frontTestWord, indexOfSecondWordInFirst };
+    return { sharedLetters: frontTestWord, indexOfSecondWordInFirst };
 }
 
 
 function joinWords(indexOne, indexTwo, indexOfSecondWordInFirst, array){
-    console.log('joinWords:     ',array)
+console.log('these are the arguments for join words', indexOne, indexTwo, indexOfSecondWordInFirst, array)
 
   let first = array[indexOne];
   let second = array[indexTwo];
@@ -104,30 +106,28 @@ function findShortestSubstring(words){
         }
     };
 
-
-
-
-
     
-    while(words.length > 1){
+    while(words.length > 1){// greater than two because the last time this runs it will join the last two indexes.
         for(let i = 0; i < words.length; i++){
-            // shell
+            // this looks at each word in the words array
             let left = words[i];
-            bestYet.left.index = i;
-
+            // bestYet.left.index = i;
+                // this 
             for(let k = 0; k < words.length; k++){
                 if(i === k){ break } // don't compare same word
                 let right = words[k];// hello
                 // how many consecutive letters does right share with left?
                 let current = numOfSharedLetters(left, right);
-    
+                
+                console.log('bestYet: ', bestYet)
+                console.log('current: ', current)
                 // does this word share more letters with words[i] than best?
-                if(current.longestWord.length > bestYet.count){
+                if(current.sharedLetters.length > bestYet.count){
                     bestYet.left.word = left;
                     bestYet.left.indexInWords = i;
                     bestYet.right.word = right;
                     bestYet.right.indexInWords = k;
-                    bestYet.count = current.longestWord.length;
+                    bestYet.count = current.sharedLetters.length;
                     bestYet.indexOfRightInLeft = current.indexOfSecondWordInFirst;
                 }
             }
