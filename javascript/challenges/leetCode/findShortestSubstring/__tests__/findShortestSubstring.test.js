@@ -15,6 +15,7 @@ describe('should test numOfSharedLetters', () => {
         expect(numOfSharedLetters("pesche", "hello").longestWord).toStrictEqual('he');
     });
 });
+
 describe('should test joinWords', () => {
     it('should return "beasleyloves', () => {
         let array = ['beasley', 'loves','golden', 'gardens'];
@@ -26,6 +27,7 @@ describe('should test joinWords', () => {
         expect(joinWords(0,1,4,array)[array.length-1]).toStrictEqual('seashello');
     });
 });
+
 describe('Basic test of findShortestSubstring', () => {
     it('should import findShortestSubstring', () => {
 
@@ -46,9 +48,9 @@ describe('Basic test of findShortestSubstring', () => {
 
         expect(findShortestSubstring(words, '')).toHaveLength(output.length);
     });
-    it('should work with input that\'s easier to read', () => {
+    it.only('should work with input that\'s easier to read', () => {
         let input = ['shell', 'hello', 'oh', 'bombs'];
-        expect(findShortestSubstring(input)).toHaveLength(11)
+        expect(findShortestSubstring(input)).toHaveLength(11);
     });
 });
 
