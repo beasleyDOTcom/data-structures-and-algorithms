@@ -60,7 +60,6 @@ function numOfSharedLetters(firstWord, secondWord) {
 
 
 function joinWords(indexOne, indexTwo, indexOfSecondWordInFirst, array){
-console.log('these are the arguments for join words', indexOne, indexTwo, indexOfSecondWordInFirst, array)
 
   let first = array[indexOne];
   let second = array[indexTwo];
@@ -72,14 +71,12 @@ console.log('these are the arguments for join words', indexOne, indexTwo, indexO
     array.splice(indexTwo, 1);
     array.splice(indexOne, 1);
   }
-    console.log('after splice: ', array)
 
   if (indexOfSecondWordInFirst === 0){
     array.push(first + second);
   } else {
     array.push(first.substring(0, indexOfSecondWordInFirst) + second);
   }
-  console.log('after concatenating: ', array)
   return array
 }
 
@@ -89,83 +86,58 @@ function findShortestSubstring(words){
 
     if(words.length === 1){
         return words[0];
-    } else if(words.length < 2){
-      return '';
     }
+    while(words.length > 1){// greater than one because the last time this runs it will join the last two indexes.
 
-    let bestYet = {
-        count: 0,
-        indexOfRightInLeft: null,
-        left: {
-            word: null,
-            indexInWords: null
-        },
-        right: {
-            word:null,
-            indexInWords: null
-        }
-    };
+        let bestYet = {
+            count: 0,
+            indexOfRightInLeft: null,
+            left: {
+                word: null,
+                indexInWords: null
+            },
+            right: {
+                word:null,
+                indexInWords: null
+            }
+        };
 
-    
-    while(words.length > 1){// greater than two because the last time this runs it will join the last two indexes.
         for(let i = 0; i < words.length; i++){
             // this looks at each word in the words array
-            let left = words[i];
+            let left = words[i]; // 'shell' --> 'hello'
             // bestYet.left.index = i;
                 // this 
             for(let k = 0; k < words.length; k++){
-                if(i === k){ break } // don't compare same word
-                let right = words[k];// hello
-                // how many consecutive letters does right share with left?
-                let current = numOfSharedLetters(left, right);
-                
-                console.log('bestYet: ', bestYet)
-                console.log('current: ', current)
-                // does this word share more letters with words[i] than best?
-                if(current.sharedLetters.length > bestYet.count){
-                    bestYet.left.word = left;
-                    bestYet.left.indexInWords = i;
-                    bestYet.right.word = right;
-                    bestYet.right.indexInWords = k;
-                    bestYet.count = current.sharedLetters.length;
-                    bestYet.indexOfRightInLeft = current.indexOfSecondWordInFirst;
+                if(i !== k){ // don't compare same inde of words with itself
+                    let right = words[k]; //hello --> 'shell'
+                    // how many consecutive letters does the front of right share with the back of left?
+                    let current = numOfSharedLetters(left, right);
+                    
+                    // does this word share more letters with words[i] than best?
+                    if(current.sharedLetters.length > bestYet.count){
+                        bestYet.left.word = left;
+                        bestYet.left.indexInWords = i;
+                        bestYet.right.word = right;
+                        bestYet.right.indexInWords = k;
+                        bestYet.count = current.sharedLetters.length;
+                        bestYet.indexOfRightInLeft = current.indexOfSecondWordInFirst;
+                    }
                 }
             }
         }
-
-        joinWords(bestYet.left.indexInWords, bestYet.right.indexInWords, bestYet.indexOfRightInLeft, words);
+        if(bestYet.count > 0){
+            joinWords(bestYet.left.indexInWords, bestYet.right.indexInWords, bestYet.indexOfRightInLeft, words);
+        } else {
+            let noSharedLetters = words.reduce((acc, val) => {
+                return acc += val;
+            }, '')
+            return noSharedLetters;
+        }
 
     } 
 
-    return words;
-
+    return words[0];
 } 
 
 
  module.exports = {findShortestSubstring, numOfSharedLetters, joinWords}
-
-
-
-/*
-
-    function numOfSharedLetters(firstWord, secondWord) {
-        // takes in two words and returns the number of consecutive letters the second word shares with the first.
-        // hello -> shell --> 4
-        // h -> he -> hel -> hell
-        let regex;
-        let frontTestWord = '';
-        for (let i = 0; i < secondWord.length; i++) {
-            regex = new RegExp(frontTestWord + secondWord[i], 'gm')
-            if (regex.test(firstWord, 'gm')) {
-                frontTestWord += secondWord[i];
-            } else {
-                break;
-            }
-        }
-
-        regex = new RegExp(frontTestWord, 'gi')
-        let indexOfSecondWordInFirst = firstWord.search(regex);
-        // let longestWord = frontTestWord.length > backTestWord.length ? frontTestWord : backTestWord;
-        return { longestWord: frontTestWord, indexOfSecondWordInFirst };
-    }
-    */
