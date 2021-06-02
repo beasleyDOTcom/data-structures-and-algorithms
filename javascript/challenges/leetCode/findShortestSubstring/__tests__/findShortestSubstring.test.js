@@ -3,16 +3,16 @@ const { findShortestSubstring, numOfSharedLetters, joinWords } = require('../fin
 
 describe('should test numOfSharedLetters', () => {
     it('should return "" if given words that don\'t combine', () => {
-        expect(numOfSharedLetters('alex', 'loves').longestWord).toHaveLength(0);
+        expect(numOfSharedLetters('alex', 'loves').sharedLetters).toHaveLength(0);
     });
     it('should return hell if given seashell and hello', () => {
-        expect(numOfSharedLetters('seashell', 'hello').longestWord).toStrictEqual('hell');
+        expect(numOfSharedLetters('seashell', 'hello').sharedLetters).toStrictEqual('hell');
     });
     it('should return word with length 2 if given "pesche" and "hello"', () => {
-        expect(numOfSharedLetters('pesche', 'hell0').longestWord).toHaveLength(2);
+        expect(numOfSharedLetters('pesche', 'hell0').sharedLetters).toHaveLength(2);
     });
     it('should return "he" if given "pesche" and "hello', () => {
-        expect(numOfSharedLetters("pesche", "hello").longestWord).toStrictEqual('he');
+        expect(numOfSharedLetters("pesche", "hello").sharedLetters).toStrictEqual('he');
     });
 });
 
@@ -48,9 +48,17 @@ describe('Basic test of findShortestSubstring', () => {
 
         expect(findShortestSubstring(words, '')).toHaveLength(output.length);
     });
-    it.only('should work with input that\'s easier to read', () => {
+    it('should work with input that\'s easier to read', () => {
         let input = ['shell', 'hello', 'oh', 'bombs'];
         expect(findShortestSubstring(input)).toHaveLength(11);
+    });
+    it('should pass perform as expected with an array of two', () => {
+        let input = ['hello', 'shell'];
+        expect(findShortestSubstring(input)).toStrictEqual('shello');
+    });
+    it('should produce same result if array is rearranged', () => {
+        let input = ['shell', 'hello'];
+        expect(findShortestSubstring(input)).toStrictEqual('shello');        
     });
 });
 
