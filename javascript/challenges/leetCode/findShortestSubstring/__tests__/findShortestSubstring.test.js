@@ -1,4 +1,4 @@
-const { findShortestSubstring, numOfSharedLetters, joinWords } = require('../findShortestSubstring.js');
+const { findShortestSubstring, numOfSharedLetters, joinWords } = require('../secondTryAtFindShortestSubstring.js');
 
 
 describe('should test numOfSharedLetters', () => {
