@@ -60,5 +60,27 @@ describe('Basic test of findShortestSubstring', () => {
         let input = ['shell', 'hello'];
         expect(findShortestSubstring(input)).toStrictEqual('shello');        
     });
+
+    // so the failure of this test has me questioning my path to a solution. 
+    // I thought that joining the words by order of how many letters they share consecutively would create the shorted substring but.. it's not.
+    // what's happening? 
+    // abcdef
+    //    defab --> abcdefab --> 3 shared letters
+    //          efde  --> zero letters 
+    // total of 3 shared letters
+    // efde
+    //   defab
+    //      abcdef
+    // total of four shared letters
+    // in conclusion, seeking the match with the most shared letters does not, in some cases, return the shortest string.
+
+    // instead the solution for this might need to be a different form of brute force. 
+    // this could call numSharedLetters and join with every combination of words then search through the results array and return the shortest string. 
+    it('should pass this test from leetcode', () => {
+        let input = ["abcdef","efde","defab"];
+        let expected = "efdefabcdef";
+        // received    "efdeabcdefab"
+        expect(findShortestSubstring(input)).toStrictEqual(expected);
+    });
 });
 
