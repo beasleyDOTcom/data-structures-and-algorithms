@@ -1,4 +1,4 @@
-const { findShortestSubstring, numOfSharedLetters, joinWords } = require('../secondTryAtFindShortestSubstring.js');
+const { findShortestSubstring, numOfSharedLetters, joinWords, returnArrayWithoutValueAtIndex } = require('../secondTryAtFindShortestSubstring.js');
 
 
 describe('should test numOfSharedLetters', () => {
@@ -81,6 +81,27 @@ describe('Basic test of findShortestSubstring', () => {
         let expected = "efdefabcdef";
         // received    "efdeabcdefab"
         expect(findShortestSubstring(input)).toStrictEqual(expected);
+    });
+});
+
+describe.only('it should test the functionality of returnArrayWithoutValueAtIndex', () => {
+    it('should remove 3 and leave others [1,2,3,4,5]', () => {
+        let input = [1,2,3,4,5];
+        expect(returnArrayWithoutValueAtIndex(2, input)).toStrictEqual([1,2,4,5]);
+    });
+    it('should not mutate original array', () => {
+        let input = [1,2,3,4,5];
+        expect(returnArrayWithoutValueAtIndex(2, input)).toHaveLength(4); 
+        expect(input).toHaveLength(5);
+        expect(input).toStrictEqual([1,2,3,4,5])
+    });
+    it('should handle index 0', () => {
+        let input = [1,2,3,4,5];
+        expect(returnArrayWithoutValueAtIndex(0, input)).toStrictEqual([2,3,4,5]);
+    });
+    it('should handle last index', () => {
+        let input = [1,2,3,4,5];
+        expect(returnArrayWithoutValueAtIndex(input.length-1, input)).toStrictEqual([1,2,3,4]);
     });
 });
 
