@@ -6,8 +6,10 @@ function numOfSharedLetters(firstWord, secondWord) {
     // h -> he -> hel -> hell
     let regex;
     let frontTestWord = '';
-    if(firstWord === '' || secondWord === ''){
-        return
+    if(firstWord === ''){
+        return {sharedLetters: '', indexOfSecondWordInFirst: 0};
+    } else if (secondWord === ''){
+        return {sharedLetters: '', indexOfSecondWordInFirst: firstWord.length};
     }
     for (let i = 0; i < secondWord.length; i++) {
         regex = new RegExp(frontTestWord + secondWord[i], 'gm')
@@ -20,6 +22,7 @@ function numOfSharedLetters(firstWord, secondWord) {
 
     regex = new RegExp(frontTestWord + '$', 'gi')
     let indexOfSecondWordInFirst;
+    
     if(regex.test(firstWord)){
         indexOfSecondWordInFirst = firstWord.search(regex);
         return { sharedLetters: frontTestWord, indexOfSecondWordInFirst };
@@ -31,27 +34,14 @@ function numOfSharedLetters(firstWord, secondWord) {
     return { sharedLetters: frontTestWord, indexOfSecondWordInFirst };
 }
 
-
-function joinWords(indexOne, indexTwo, indexOfSecondWordInFirst, array){
-
-  let first = array[indexOne];
-  let second = array[indexTwo];
-
-  if(indexOne > indexTwo){
-    array.splice(indexOne, 1);
-    array.splice(indexTwo, 1);
-  } else {
-    array.splice(indexTwo, 1);
-    array.splice(indexOne, 1);
-  }
-
-  if (indexOfSecondWordInFirst === 0){
-    array.push(first + second);
-  } else {
-    array.push(first.substring(0, indexOfSecondWordInFirst) + second);
-  }
-  return array
+function joinWords(firstWord, secondWord, indexOfSecondWordInFirst){
+    if ( indexOfSecondWordInFirst === 0){
+        return firstWord + secondWord;
+    } else {
+        return firstWord.substring(0, indexOfSecondWordInFirst) + secondWord;
+    }
 }
+
 
 function returnArrayWithoutValueAtIndex(index, array){
     let front = array.slice(0,index);
@@ -63,17 +53,31 @@ function findShortestSubstring(words){
 
     let shortest = words.join('');// 'everysinglewordinwordsjustaddedtogether'
     // join every possible combination of words and compare it with shortest
-    // return the shortest string in resultsArray
+    // return the shortest string created;
+
     function _helper(array, string){
-// what is your base case here? 
+        // what is your base case here? --> one word in array
+        // when there is one word in array, what should happen? 
+        // --> join last word with string and then compare/replace final string with best
+        if(array.length === 1){
+            let sharedLettersObject = numOfSharedLetters(string, array[0]);
+            let currentString = joinWords(string, array[0], sharedLettersObject.indexOfSecondWordInFirst);
+            if(currentString.length < shortest.length){
+                shortest = currentString;
+            }
+            return;
+        }
+        // otherwise, call _helper with 
         for(let i = 0; i < array.length; i++){
-            let front = array.slice(0,i);
-            let back = array.slice(i+1)
-            let arrayWithoutCurrentIndex = front.concat(back)
+            let arrayWithoutCurrentIndex = returnArrayWithoutValueAtIndex(i, array);
+            let sharedLettersObject = numOfSharedLetters(string, array[i]);
+            let newString = joinWords(string, array[i], sharedLettersObject.indexOfSecondWordInFirst);
+            _helper(arrayWithoutCurrentIndex, newString);
         }
 
     }
-
+    _helper(words, '');
+    return shortest;
 } 
 
 
