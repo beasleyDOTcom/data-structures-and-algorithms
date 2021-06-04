@@ -18,13 +18,12 @@ describe('should test numOfSharedLetters', () => {
 
 describe('should test joinWords', () => {
     it('should return "beasleyloves', () => {
-        let array = ['beasley', 'loves','golden', 'gardens'];
 
-        expect(joinWords(0,1,0, array)[array.length-1]).toStrictEqual('beasleyloves');
+        expect(joinWords('beasley', 'loves', 0)).toStrictEqual('beasleyloves');
     });
     it('should join two words', () => {
-        let array = ['seashell', 'hello','pizza', 'sticks'];
-        expect(joinWords(0,1,4,array)[array.length-1]).toStrictEqual('seashello');
+
+        expect(joinWords('seashell', 'hello', 4)).toStrictEqual('seashello');
     });
 });
 
@@ -40,13 +39,13 @@ describe('Basic test of findShortestSubstring', () => {
         // Output: "alexlovesleetcode"
         let words = ["alex", "loves", "leetcode"];
         let output = "alexlovesleetcode";
-        expect(findShortestSubstring(words, '')).toHaveLength(output.length);
+        expect(findShortestSubstring(words)).toHaveLength(output.length);
     });
     it('should reduce string as much as possible', () => {
         let words = ["catg", "ctaagt", "gcta", "ttca", "atgcatc"];
         let output = "gctaagttcatgcatc";
 
-        expect(findShortestSubstring(words, '')).toHaveLength(output.length);
+        expect(findShortestSubstring(words)).toHaveLength(output.length);
     });
     it('should work with input that\'s easier to read', () => {
         let input = ['shell', 'hello', 'oh', 'bombs'];
@@ -84,7 +83,7 @@ describe('Basic test of findShortestSubstring', () => {
     });
 });
 
-describe.only('it should test the functionality of returnArrayWithoutValueAtIndex', () => {
+describe('it should test the functionality of returnArrayWithoutValueAtIndex', () => {
     it('should remove 3 and leave others [1,2,3,4,5]', () => {
         let input = [1,2,3,4,5];
         expect(returnArrayWithoutValueAtIndex(2, input)).toStrictEqual([1,2,4,5]);
