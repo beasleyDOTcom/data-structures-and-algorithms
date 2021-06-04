@@ -53,7 +53,11 @@ function joinWords(indexOne, indexTwo, indexOfSecondWordInFirst, array){
   return array
 }
 
-
+function returnArrayWithoutValueAtIndex(index, array){
+    let front = array.slice(0,index);
+    let back = array.slice(index+1);
+    return front.concat(back);
+  }
 
 function findShortestSubstring(words){
 
@@ -73,4 +77,4 @@ function findShortestSubstring(words){
 } 
 
 
- module.exports = {findShortestSubstring, numOfSharedLetters, joinWords}
+ module.exports = {findShortestSubstring, numOfSharedLetters, joinWords, returnArrayWithoutValueAtIndex}
