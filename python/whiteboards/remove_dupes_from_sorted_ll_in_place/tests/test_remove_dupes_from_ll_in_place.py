@@ -29,10 +29,8 @@ LL.add(4)
 LL.add(5)
 
 
-def proof_of_life():
-    assert remove_duplicates_from_ll
-
-def prove_happy_path():
+def test_happy_path():
+    remove_duplicates_from_ll(LL.head)
     assert LL.head.value == 1
     assert LL.head.next.value == 2
     assert LL.head.next.next.value == 3
@@ -40,6 +38,28 @@ def prove_happy_path():
     assert LL.head.next.next.next.next.value == 5
 
 def test_null():
-    emptyList = (LinkedList())
+    emptyList = LinkedList(None)
     expected = None
-    actual = remove_duplicates_from_ll()
+    actual = remove_duplicates_from_ll(emptyList.head)
+    assert actual == expected
+
+
+def test_all_dupes():
+    ll = LinkedList(Node(3))
+    ll.add(3)
+    ll.add(3)
+    ll.add(3)
+    ll.add(3)
+    ll.add(3)
+    ll.add(3)
+    remove_duplicates_from_ll(ll.head)
+    actual = ll.head.value
+    expected = 3
+    assert actual == expected
+    assert ll.head.next == None
+
+def test_one_node():
+    ll = LinkedList(Node(3))
+    expected = ll.head
+    actual = remove_duplicates_from_ll(ll.head)
+    assert actual == expected

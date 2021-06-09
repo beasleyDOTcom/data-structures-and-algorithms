@@ -26,20 +26,25 @@ previousNode: 1 3
 
 """
 
+
 def remove_duplicates_from_ll(head):
 
   if not head:
-    return head 
+    return head
 
-  previousNode = head 
+  previousNode = head
 
   while previousNode.next:
-    currentNode = previousNode.next 
+    currentNode = previousNode.next
 
     while currentNode.value == previousNode.value:
       previousNode.next = currentNode.next
       currentNode = currentNode.next
+      if not currentNode:
+        break
 
     previousNode = previousNode.next
+    if not previousNode:
+      break
 
   return head
