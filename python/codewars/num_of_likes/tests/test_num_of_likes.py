@@ -1,8 +1,5 @@
 from . num_of_likes import num_of_likes
-def test_import_of_name():
-    expected = 'True'
-    actual = num_of_likes(True)
-    assert actual == expected
+
     
 def test_empty():
     expected = 'no one likes this'
