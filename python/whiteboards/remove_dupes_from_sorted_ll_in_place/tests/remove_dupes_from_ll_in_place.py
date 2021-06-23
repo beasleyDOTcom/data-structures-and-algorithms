@@ -28,17 +28,19 @@ previousNode: 1 3
 
 
 def remove_duplicates_from_ll(head):
-
+  # if list is empty no work needs to be done
   if not head:
     return head
 
   previousNode = head
-
+  # while there are nodes that need visiting
   while previousNode.next:
     currentNode = previousNode.next
-
+    # while nodes we are looking at have duplicate values
     while currentNode.value == previousNode.value:
+      # remove reference to currentNode from list
       previousNode.next = currentNode.next
+      # prepare for next iteration
       currentNode = currentNode.next
       if not currentNode:
         break
