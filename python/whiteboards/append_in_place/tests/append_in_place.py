@@ -29,14 +29,14 @@ pop every item in stack and append to array
 """
 
 def append_in_place(a,b):
-    # a.extend(b)
+    # a.extend(b)  <--- obviously this is all that I'd need to do to perform all the tasks below perform if using the built in method but sometimes constraints are the best teachers.
     stack = Stack()
-    # push items from second array into stack
+    # push items from second array into stack while decreasing the size of b with each iteration.
     for i in range(len(b)):
         stack.push(b.pop())
 
-    while(not stack.isEmpty()):
-        # pop every item in stack and append to first array
+    while not stack.isEmpty():
+        # pop every item in stack and append it to first array
         a.append(stack.pop())
         
     
