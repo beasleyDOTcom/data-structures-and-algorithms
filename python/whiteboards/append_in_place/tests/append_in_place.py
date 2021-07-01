@@ -22,6 +22,13 @@ pop every item in stack and append to array
 """
 
 def append_in_place(a,b):
+
+    # create node class
+    class Node:
+        def __init__(self, value=None, next=None):
+            self.value = value
+            self.next = next            
+
     # create stack
     class Stack:
         def __init__(self):
@@ -32,9 +39,10 @@ def append_in_place(a,b):
                 return True
             else:
                 return False
+
         def peek(self):
             if self.isEmpty():
-                return 'cannot peek empty stack'
+                raise Exception('cannot peek empty stack')
             else:
                 return self.top.value
 
@@ -44,20 +52,19 @@ def append_in_place(a,b):
         
         def pop(self):
             if self.isEmpty():
-                return 'cannot pop empty stack'
+                raise Exception('cannot pop empty stack')
             else:
                 temp = self.top.value
                 self.top = self.top.next
                 return temp
 
-    # create node class
-    class Node:
-        def __init__(self, value=None, next=None):
-            self.value = value
-            self.next = next            
+    stack = Stack()
+    # push items from second array into stack
+    for i in reversed(range(len(b))):
+        stack.push(b[i])
 
-    # remove items from second array
-    for i in range(len(b)):
-
+    while(not stack.isEmpty()):
+        # pop every item in stack and append to first array
+        a.append(stack.pop())
         
     
