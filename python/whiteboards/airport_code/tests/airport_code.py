@@ -27,8 +27,9 @@ obj = {
 """
 Now that I write this out, it occurs to me that this hashtable is going to be the same as implementing a k-ary tree.
 
+Write a function that takes in an array of airport codes and returns a hashmap whose keys correspond to the airports codes that could be possible with that string with all of the possible 
+
 """
 
-def airport_code(argument):
-    return argument
-    
+def airport_code(string):
+
