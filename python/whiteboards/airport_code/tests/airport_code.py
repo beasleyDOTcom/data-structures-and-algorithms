@@ -3,10 +3,11 @@
 I thought of this idea when I couldn't sleep last night and thought about a whiteboard question of a friend, Steph Harper, and thought of an idea for a solution I wanted to try implementing:  
 Imagine you want to build a new flight booking website and want to show all of the possible destinations for each departure. How would you try to have the fastest update of possible destinations for each key entered?
 'a' --> atl, aus, abq, ama
-'at' --> atl, ats, atw, aty
+'at' -->    
 'atl' --> atl
 
 I got to thinking of creating a hashtable recursively building each key so that 
+
 """
 obj = {
     'a': {
@@ -34,15 +35,43 @@ Even though I'm going to write a recursive solution, I want to set this up as an
 'add_many' that accepts an array list and calls add_one for each airport code in the array list. 
 
 """
+# Algorithm for add_one:
+# 1. call helper with initial object, code, 0, and ''
+# 2. setup base case for helper()
+# 3. if this location doesn't exist, initialize it as an empty object
+# 4. else this has been seen and we want to add another address to it's child
+    # 5. instantiate new object to modify before adding it to hash_map_of_airport_codes
 
 class Airports:
     def __init__(self):
         self.hash_map_of_airport_codes = {}
 
     def add_one(self, code):
-        # mutate hashmap of airport codes
-        self.hash_map_of_airport_codes[code] = code
+        # mutate hashmap of airport codes:
 
+        def _helper(obj, code, index, key):
+# 2. setup base case for helper()
+            if index == 2:
+                obj[key] = code
+                return
+            else:
+# 3. if this location doesn't exist, initialize it as an empty object
+                if obj.get(code[index], False) == False:
+                    #initialize
+                    obj[code[index]] = {}
+                    _helper(obj[code[index]], code, index + 1)
+# 4. else this has been seen and we want to add another address to it's child
+                else:
+                    temp = {}
+                    # don't overwrite by adding new path
+                    _helper(temp, code, index + 1)
+                    print('ho hoho', obj)
+                    obj[code[index]].update({temp})
+                    
+# 1. call helper with initial object, code and 0
+        _helper(self.hash_map_of_airport_codes, code, 0, '')
+
+        
     def add_many(self, array_list_of_airport_codes):
         # accepts an array list and calls add_one for each airport code in the array list.
         for code in array_list_of_airport_codes:
@@ -55,3 +84,21 @@ def airport_code(airport_codes_list):
     selection.add_many(airport_codes_list)
     return selection
 
+"""
+
+Microsoft Leap --> floor 2 tables 1 and 2
+--->>> tell your story! What lead you hear? 
+
+ekata --> floor 3  table 1 scott bang . Identity verification --> is this a safe transaction? recently acquaried by mastercard. Global company offices but headquarted in Seattle. 
+self awareness 
+iterative improvement.. sometimes putting people in roles they don't know how to do yet. 
+good general questions for companies? --> what are your performance reviews like?
+
+trying --> trying to solve a problem on your own and learning from that
+being okay with looking yourself in the mirror having failed and get up and try again. 
+in seattle.. 
+your functional skills are only so valuable
+Networking is your inroad 
+
+
+"""
