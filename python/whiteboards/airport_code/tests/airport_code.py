@@ -3,7 +3,7 @@
 I thought of this idea when I couldn't sleep last night and thought about a whiteboard question of a friend, Steph Harper, and thought of an idea for a solution I wanted to try implementing:  
 Imagine you want to build a new flight booking website and want to show all of the possible destinations for each departure. How would you try to have the fastest update of possible destinations for each key entered?
 'a' --> atl, aus, abq, ama
-'at' -->    
+'at' -->  atl, ats, atw, aty  
 'atl' --> atl
 
 I got to thinking of creating a hashtable recursively building each key so that 
@@ -52,21 +52,19 @@ class Airports:
         def _helper(obj, code, index, key):
 # 2. setup base case for helper()
             if index == 2:
-                obj[key] = code
+                obj[code] = code
                 return
             else:
+                key += code[index]
 # 3. if this location doesn't exist, initialize it as an empty object
-                if obj.get(code[index], False) == False:
+                if obj.get(key, False) == False:
                     #initialize
-                    obj[code[index]] = {}
-                    _helper(obj[code[index]], code, index + 1)
+                    obj[key] = []
 # 4. else this has been seen and we want to add another address to it's child
                 else:
-                    temp = {}
-                    # don't overwrite by adding new path
-                    _helper(temp, code, index + 1)
-                    print('ho hoho', obj)
-                    obj[code[index]].update({temp})
+                    obj[key].append(code)
+
+                _helper(obj, code, index + 1, key)
                     
 # 1. call helper with initial object, code and 0
         _helper(self.hash_map_of_airport_codes, code, 0, '')
@@ -100,5 +98,27 @@ in seattle..
 your functional skills are only so valuable
 Networking is your inroad 
 
+an implementation whose direction doesn't really work towards the end solution I want
+   def _helper(obj, code, index, key):
+# 2. setup base case for helper()
+            if index == 2:
+                obj[key] = code
+                return
+            else:
+# 3. if this location doesn't exist, initialize it as an empty object
+                if obj.get(code[index], False) == False:
+                    #initialize
+                    obj[code[index]] = {}
+                    _helper(obj[code[index]], code, index + 1)
+# 4. else this has been seen and we want to add another address to it's child
+                else:
+                    temp = {}
+                    # don't overwrite by adding new path
+                    _helper(temp, code, index + 1)
+                    print('ho hoho', obj)
+                    obj[code[index]].update({temp})
+                    
+# 1. call helper with initial object, code and 0
+        _helper(self.hash_map_of_airport_codes, code, 0, '')
 
 """
