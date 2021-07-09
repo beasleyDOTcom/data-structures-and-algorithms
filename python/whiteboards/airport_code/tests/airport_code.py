@@ -10,21 +10,26 @@ I got to thinking of creating a hashtable recursively building each key so that
 
 """
 obj = {
-    'a': {
-        'at': {
-            'atl': 'atl',
-            'ats': 'ats',
-            'atw': 'atw',
-            'aty': 'aty'
-        },
-
-        'au': {
-            'aus': 'aus'
-        },
-
-
-    }
+    'a' : ['atl', 'ats', 'atw', 'aty', 'aus'],
+    'at': ['atl', 'ats', 'atw', 'aty'],
+    'ats': 'ats'
 }
+# obj = {
+#     'a': {
+#         'at': {
+#             'atl': 'atl',
+#             'ats': 'ats',
+#             'atw': 'atw',
+#             'aty': 'aty'
+#         },
+
+#         'au': {
+#             'aus': 'aus'
+#         },
+
+
+#     }
+# }
 """
 Now that I write this out, it occurs to me that this hashtable is going to be the same as implementing a k-ary tree.
 
@@ -56,11 +61,11 @@ class Airports:
                 return
             else:
                 key += code[index]
-# 3. if this location doesn't exist, initialize it as an empty object
+# 3. if this location doesn't exist, initialize it as an array list with key in it
                 if obj.get(key, False) == False:
                     #initialize
-                    obj[key] = []
-# 4. else this has been seen and we want to add another address to it's child
+                    obj[key] = [code]
+# 4. else this has been seen and we want to add another address to it's array list
                 else:
                     obj[key].append(code)
 

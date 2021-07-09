@@ -4,15 +4,12 @@ def test_one_code():
     input = ['dfw']
     actual = airport_code(input)
     print(actual.hash_map_of_airport_codes)
-    assert actual.hash_map_of_airport_codes['d']['f']['w'] == 'dfw'
+    assert actual.hash_map_of_airport_codes['d'] == ['dfw']
 
 
     
 def test_multiple_codes():
-    input = ['atl', 'ats', 'atw', 'aty']
+    input = ['atl', 'ats', 'atw', 'aty', 'aus']
     actual = airport_code(input)
-    airports_list = actual.hash_map_of_airport_codes
-    print(airports_list)
-    print('this is actual: ', actual.hash_map_of_airport_codes)
-    assert airports_list.includes('atw')
-    
+    assert actual.hash_map_of_airport_codes['au'] == ['aus']
+    assert 'atw' in actual.hash_map_of_airport_codes['at']    
