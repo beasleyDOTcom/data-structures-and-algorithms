@@ -33,10 +33,10 @@ def two_sum(nums, target):
         hash_map[nums[index]] = index
 
     for idx in range(len(nums)):
-        num = nums[idx]
-        difference = target - num
+        
+        difference = target - nums[idx]
         answer = hash_map.get(difference, False)
-        if answer != False:
+        if answer != False and answer != idx:
             # than we have a match
             return [idx, answer]
 

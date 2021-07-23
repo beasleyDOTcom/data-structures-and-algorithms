@@ -16,13 +16,22 @@ def test_second():
     assert actual == expected
     
 
-def test_first():
+def test_third():
     nums = [3,3]
     target = 6
     expected = [0, 1]
     actual = two_sum(nums, target)
     assert actual == expected
     
+def test_fourth():
+    nums = [1,3,4,2]
+    target = 6
+    expected = [2,3]
+    actual = two_sum(nums, target)
+    assert actual == expected
+    
+    
+
 """
 Example 1:
 
