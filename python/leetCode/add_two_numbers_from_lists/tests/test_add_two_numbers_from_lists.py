@@ -23,6 +23,17 @@ class LinkedList():
         # we have reached the last valid node in list. add new node after that
         temp.next = Node(val)        
 
+def build_list(string_num):
+    
+    list = LinkedList()
+
+    i = len(string_num)-1
+    while i >= 0:
+        list.add(int(string_num[i]))
+        i -= 1
+    
+    return list
+
 
 """
 Input: l1 = [2,4,3], l2 = [5,6,4]
@@ -45,17 +56,6 @@ The number of nodes in each linked list is in the range [1, 100].
 It is guaranteed that the list represents a number that does not have leading zeros.
 
 """
-def build_list(string_num):
-    
-    list = LinkedList()
-
-    i = len(string_num)-1
-    while i >= 0:
-        list.add(int(string_num[i]))
-        i -= 1
-    
-    return list
-
 
 def test_first_linked_list():
     # 342 + 465 = 807
