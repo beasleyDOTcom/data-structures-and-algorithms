@@ -14,9 +14,11 @@ class LinkedList():
     def add(self, val):
         temp = self.root
         if temp == None:
-            temp = Node(val)
+            self.root = Node(val)
+            return
         elif temp.next == None:
             temp.next = Node(val)
+            return
         while temp.next != None:
             temp = temp.next
         

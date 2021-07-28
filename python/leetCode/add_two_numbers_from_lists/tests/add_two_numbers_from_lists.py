@@ -47,11 +47,13 @@ def build_list(string_num):
 
 
 def add_two_numbers_from_lists(node1, node2):
-
+    print('this is node1: ', node1)
+    print('this is node2: ', node2)
 
 
     def add_one_list(node1):
         # define a multiplier that starts out as 1.
+        print(node1)
         multiplier = 1
         sum = 0
         if node1.next == None:
@@ -67,5 +69,5 @@ def add_two_numbers_from_lists(node1, node2):
 
     # represent sum as ll in reverse
     result = build_list(str(sum))
-    return result
+    return result.root
     
