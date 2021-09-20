@@ -45,3 +45,15 @@ def test_three():
     expected = 3
     actual = longest_substring(s)
     assert actual == expected
+
+def test_symbols():
+    s = '#@$%@$@@%./'
+    expected = 4
+    actual = longest_substring(s)
+    assert actual == expected
+
+def test_post():
+    s = "dvdf"
+    expected = 3
+    actual = longest_substring(s)
+    assert actual == expected
