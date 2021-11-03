@@ -50,7 +50,6 @@ class LinkedList{
 
     insertBefore(targetValue, value){
         let currentNode = this.head;
-        console.log(currentNode.value, value, targetValue)
         if(this.head.value === targetValue){
             return this.insert(value, this.head);
         }

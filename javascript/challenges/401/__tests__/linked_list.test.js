@@ -130,7 +130,7 @@ it('where k is greater than length of list', () => {
     ll.append(4);
     ll.append(5);
     ll.append(6);
-    expect(ll.nthFromTheEnd(9)).toThrowError('your query is unsupported');
+    expect(() => ll.nthFromTheEnd(9)).toThrow(Error);
 });
 // expect(() => sum('junk', null)).toThrowError('a and b must be numeric');
 // Where k is greater than the length of the linked list

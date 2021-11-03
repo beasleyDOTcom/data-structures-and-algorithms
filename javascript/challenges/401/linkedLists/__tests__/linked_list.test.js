@@ -51,6 +51,18 @@ it('should return true if a given value is found in the linked list', () => {
 
 });
 
+it('should return false if a given value that is not found in the linked list', () => {
+    const ll = new LinkedList();
+    ll.insert('apples');
+    ll.insert('bananas');
+    ll.append('cucumbers');
+    ll.append('peckles');
+    ll.append('bubbles');
+    ll.append('cheeky');
+    expect(ll.includes('bobby')).toBe(false);
+
+});
+
 it('should return a string of all the values from the linked list', () => {
     const ll = new LinkedList();
     ll.insert('c');
@@ -130,7 +142,7 @@ it('where k is greater than length of list', () => {
     ll.append(4);
     ll.append(5);
     ll.append(6);
-    expect(ll.nthFromTheEnd(9)).toThrowError('your query is unsupported');
+    expect(() => ll.nthFromTheEnd(9)).toThrow(Error);
 });
 // expect(() => sum('junk', null)).toThrowError('a and b must be numeric');
 // Where k is greater than the length of the linked list
