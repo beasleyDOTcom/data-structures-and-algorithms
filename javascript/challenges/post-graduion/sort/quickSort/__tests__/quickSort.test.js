@@ -54,8 +54,7 @@ describe('is this less than that?', () => {
         const before = Date.now();
         const reverse = await quickSort(reverseSorted);
         const time = Date.now() - before;
-        console.log('reversereverse: ',time)
-        expect(quickSort(complexSorted)).toStrictEqual(complexSorted)       
+        expect(quickSort(complexSorted)).toStrictEqual(complexSorted);       
     });
     it('should return a sorted array when given a simple unsorted array', () => {
         expect(quickSort(simple)).toStrictEqual([1,2,3]);
@@ -64,8 +63,6 @@ describe('is this less than that?', () => {
         let before = Date.now();
         let keepItSimple = await quickSort(evenLonger);
         let after = Date.now();
-        console.log(keepItSimple)
-        console.log(after - before, ' this is the time?')
         expect(quickSort(evenLonger)).toStrictEqual(     [ -90.02473214537035,
             -56.26087729789712,
             -18.52961091930402,
