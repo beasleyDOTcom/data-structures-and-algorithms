@@ -9,8 +9,6 @@ function insertSort(arr){
         j--
       }
       arr[j+1] = temp;
-console.log(arr)
-
     }
     return arr;
 
